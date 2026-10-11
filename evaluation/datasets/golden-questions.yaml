@@ -1,0 +1,68 @@
+# Pocket FM golden questions for org-brain / locate evaluation.
+# Expand with real asks; never invent production root causes in expected answers.
+version: 1
+cases:
+  - id: unlock-show-owner
+    question: "Which service owns unlock show for Pocket FM consumer?"
+    expected_status: answered
+    expected_repository_ids:
+      - radioly_client_api
+    expected_entity_types:
+      - flow
+      - service
+    forbidden_claims:
+      - "definitely owned by search"
+    method: repository_overlap
+    wave: P0
+
+  - id: ads-latency-triage
+    question: "FM ads latency is high — where do I start?"
+    expected_status: answered
+    expected_repository_ids:
+      - airflow
+      - radioly_client_api
+    notes: Prefer handbook flow entities; ask for VOC/UID if missing
+    method: repository_overlap
+    wave: P1
+
+  - id: infra-onboarding
+    question: "How do we onboard a new Kubernetes service to QA?"
+    expected_status: answered
+    expected_repository_ids:
+      - infra-deployments-k8s
+    expected_path_contains:
+      - "SERVICE_ONBOARDING"
+      - "overlays"
+    forbidden_claims:
+      - "use application-onboarding"
+    method: evidence_overlap
+    wave: P3
+
+  - id: insufficient-eu-region
+    question: "Why is the payments ledger failing in production region eu-west-3?"
+    expected_status: insufficient_evidence
+    expected_entity_names: []
+    forbidden_claims:
+      - "root cause is"
+    method: status_match
+    wave: P0
+
+  - id: cross-repo-impression
+    question: "Where is impression ingest implemented and who consumes playtime?"
+    expected_status: answered
+    expected_repository_ids:
+      - fabric
+    notes: May also touch kafka-stream-clients; label multi-repo claims
+    method: repository_overlap
+    wave: P1
+
+  - id: groot-kb-load
+    question: "How does Groot load a service knowledge pack?"
+    expected_status: answered
+    expected_repository_ids:
+      - groot
+    expected_path_contains:
+      - "knowledge"
+      - "CONTRACT"
+    method: evidence_overlap
+    wave: P2

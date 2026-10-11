@@ -1,0 +1,49 @@
+# Maps org.yaml repository ids → content-knowledge-base pack folders.
+version: 1
+content_knowledge_base:
+  github: https://github.com/Pocket-Fm/content-knowledge-base.git
+  local_path_env: PFM_CKB_PATH
+  default_local_path: ../content-knowledge-base
+
+mappings:
+  radioly_client_api:
+    pack: radioly
+    contract: radioly/knowledge-base/CONTRACT.md
+  android_client:
+    pack: android-client
+    contract: android-client/knowledge-base/CONTRACT.md
+  ios_client:
+    pack: ios-client
+    contract: ios-client/knowledge-base/CONTRACT.md
+  kafka-stream-clients:
+    pack: kafka-stream-clients
+    contract: kafka-stream-clients/knowledge-base/CONTRACT.md
+  airflow:
+    pack: airflow
+    contract: airflow/knowledge-base/CONTRACT.md
+  fabric:
+    pack: fabric
+    contract: fabric/knowledge-base/CONTRACT.md
+  content-backend:
+    pack: content-backend
+    contract: content-backend/knowledge-base/CONTRACT.md
+  go-radioly:
+    pack: go-radioly-service
+    contract: go-radioly-service/knowledge-base/CONTRACT.md
+  pocket_search:
+    pack: search
+    contract: search/knowledge-base/CONTRACT.md
+  litefm-backend:
+    pack: litefm-backend
+    contract: litefm-backend/knowledge-base/CONTRACT.md
+
+# Repos with handbook entries but no Groot pack yet
+unmapped_ok:
+  - iam
+  - nexus
+  - go-common
+  - apollo
+  - cms-dashboard-backend
+  - groot
+  - infra-deployments-k8s
+  - infra-k8s

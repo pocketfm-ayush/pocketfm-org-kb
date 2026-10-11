@@ -1,0 +1,221 @@
+api_version: org-brain/v1
+
+organization:
+  id: pocketfm
+  display_name: Pocket FM
+
+storage:
+  database_url_env: ORG_BRAIN_DATABASE_URL
+  data_directory: ./var/org-brain
+  retention_days: 365
+
+models:
+  default_provider: none
+  extraction_model_env: ORG_BRAIN_EXTRACTION_MODEL
+  answer_model_env: ORG_BRAIN_ANSWER_MODEL
+
+# Paths are relative to a sibling checkout layout under ../
+# Override paths locally; prefer GitHub URLs in CI/hosted bootstrap.
+sources:
+  repositories:
+    # --- P0 consumer / identity ---
+    - id: radioly_client_api
+      path: ../radioly
+      github: https://github.com/Pocket-Fm/radioly_client_api.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P0
+    - id: iam
+      path: ../iam
+      github: https://github.com/Pocket-Fm/iam.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P0
+    - id: nexus
+      path: ../nexus
+      github: https://github.com/Pocket-Fm/nexus.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P0
+    - id: android_client
+      path: ../android_client
+      github: https://github.com/Pocket-Fm/android_client.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P0
+    - id: ios_client
+      path: ../ios_client
+      github: https://github.com/Pocket-Fm/ios_client.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P0
+
+    # --- P1 platform ---
+    - id: kafka-stream-clients
+      path: ../kafka-stream-clients
+      github: https://github.com/Pocket-Fm/kafka-stream-clients.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P1
+    - id: airflow
+      path: ../airflow
+      github: https://github.com/Pocket-Fm/airflow.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P1
+    - id: fabric
+      path: ../fabric
+      github: https://github.com/Pocket-Fm/fabric.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P1
+    - id: content-backend
+      path: ../content-backend
+      github: https://github.com/Pocket-Fm/content-backend.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P1
+    - id: go-common
+      path: ../go-common
+      github: https://github.com/Pocket-Fm/go-common.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P1
+    - id: apollo
+      path: ../apollo
+      github: https://github.com/Pocket-Fm/apollo.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P1
+
+    # --- P2 product surfaces ---
+    - id: go-radioly
+      path: ../go-radioly-service
+      github: https://github.com/Pocket-Fm/go-radioly-service.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P2
+    - id: pocket_search
+      path: ../search
+      github: https://github.com/Pocket-Fm/pocket_search.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P2
+    - id: litefm-backend
+      path: ../litefm-backend
+      github: https://github.com/Pocket-Fm/litefm-backend.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P2
+    - id: cms-dashboard-backend
+      path: ../cms-dashboard-backend
+      github: https://github.com/Pocket-Fm/cms-dashboard-backend.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P2
+    - id: groot
+      path: ../groot
+      github: https://github.com/Pocket-Fm/groot.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P2
+
+    # --- P3 infra (docs-safe only) ---
+    - id: infra-deployments-k8s
+      path: ../Infra_deployments_k8s
+      github: https://github.com/Pocket-Fm/Infra_deployments_k8s.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P3
+      notes: docs-safe paths only; no secrets
+    - id: infra-k8s
+      path: ../Infra_k8s
+      github: https://github.com/Pocket-Fm/Infra_k8s.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P3
+      notes: docs-safe paths only
+
+  documentation:
+    enabled: true
+    path: ./memory
+  issue_tracker:
+    enabled: true
+    path: ./memory/incidents
+  observability:
+    enabled: false
+    notes: Wire Sherlock / OTel via connectors when approved
+
+  # Sibling knowledge systems (not code sources — sync adapters)
+  knowledge_peers:
+    content_knowledge_base:
+      github: https://github.com/Pocket-Fm/content-knowledge-base.git
+      local_path: ../content-knowledge-base
+      role: groot_packs
+    cerebro_knowledge:
+      local_path: ../cerebro-knowledge
+      role: cross_repo_semantics
+
+connectors:
+  mcp:
+    enabled: false
+    allowlist: []
+
+indexing:
+  include:
+    - "**/*.py"
+    - "**/*.ts"
+    - "**/*.tsx"
+    - "**/*.js"
+    - "**/*.jsx"
+    - "**/*.go"
+    - "**/*.kt"
+    - "**/*.kts"
+    - "**/*.swift"
+    - "**/*.sql"
+    - "**/*.yaml"
+    - "**/*.yml"
+    - "**/*.md"
+    - "**/*.json"
+  exclude:
+    - "**/node_modules/**"
+    - "**/.git/**"
+    - "**/vendor/**"
+    - "**/dist/**"
+    - "**/build/**"
+    - "**/*lock*"
+    - "**/generated/**"
+    - "**/.venv/**"
+    - "**/__pycache__/**"
+    - "**/*.pb.go"
+    - "**/secrets/**"
+    - "**/.env*"
+
+security:
+  tenant_isolation: required
+  redact_secrets: true
+  enforce_source_permissions: true
+  allow_destructive_actions: false
+
+query:
+  max_graph_depth: 3
+  max_nodes: 50
+  token_budget: 8000

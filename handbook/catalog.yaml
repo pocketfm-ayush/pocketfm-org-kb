@@ -1,0 +1,98 @@
+# Target repos for handbook distill.
+# status: pending until validated entities exist under repositories/<id>/.
+version: 1
+repos:
+  radioly_client_api:
+    github: Pocket-Fm/radioly_client_api
+    wave: P0
+    status: pending
+    groot_pack: radioly
+    notes: Migrate entities from content-knowledge-base/org-handbook
+  iam:
+    github: Pocket-Fm/iam
+    wave: P0
+    status: pending
+    groot_pack: null
+  nexus:
+    github: Pocket-Fm/nexus
+    wave: P0
+    status: pending
+    groot_pack: null
+  android_client:
+    github: Pocket-Fm/android_client
+    wave: P0
+    status: pending
+    groot_pack: android-client
+  ios_client:
+    github: Pocket-Fm/ios_client
+    wave: P0
+    status: pending
+    groot_pack: ios-client
+  kafka-stream-clients:
+    github: Pocket-Fm/kafka-stream-clients
+    wave: P1
+    status: pending
+    groot_pack: kafka-stream-clients
+  airflow:
+    github: Pocket-Fm/airflow
+    wave: P1
+    status: pending
+    groot_pack: airflow
+  fabric:
+    github: Pocket-Fm/fabric
+    wave: P1
+    status: pending
+    groot_pack: fabric
+  content-backend:
+    github: Pocket-Fm/content-backend
+    wave: P1
+    status: pending
+    groot_pack: content-backend
+  go-common:
+    github: Pocket-Fm/go-common
+    wave: P1
+    status: pending
+    groot_pack: null
+  apollo:
+    github: Pocket-Fm/apollo
+    wave: P1
+    status: pending
+    groot_pack: null
+  go-radioly:
+    github: Pocket-Fm/go-radioly-service
+    wave: P2
+    status: pending
+    groot_pack: go-radioly-service
+  pocket_search:
+    github: Pocket-Fm/pocket_search
+    wave: P2
+    status: pending
+    groot_pack: search
+  litefm-backend:
+    github: Pocket-Fm/litefm-backend
+    wave: P2
+    status: pending
+    groot_pack: litefm-backend
+  cms-dashboard-backend:
+    github: Pocket-Fm/cms-dashboard-backend
+    wave: P2
+    status: pending
+    groot_pack: null
+  groot:
+    github: Pocket-Fm/groot
+    wave: P2
+    status: pending
+    groot_pack: null
+    notes: Agent runtime; handbook covers locate/KB contracts only
+  infra-deployments-k8s:
+    github: Pocket-Fm/Infra_deployments_k8s
+    wave: P3
+    status: pending
+    groot_pack: null
+    notes: docs-safe paths only; no secrets
+  infra-k8s:
+    github: Pocket-Fm/Infra_k8s
+    wave: P3
+    status: pending
+    groot_pack: null
+    notes: docs-safe paths only
