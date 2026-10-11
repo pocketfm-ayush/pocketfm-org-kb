@@ -1,0 +1,39 @@
+{
+  "name": "content-backend",
+  "language": "go",
+  "framework": "gin",
+  "pack_path": "content-backend",
+  "graph_path": "content-backend/graphify/graphify-out/graph.json",
+  "knowledge_base_path": "content-backend/knowledge-base",
+  "default_base": "main",
+  "test_command": "make test",
+  "check_command": "make lint",
+  "max_repair_iterations": 3,
+  "allowed_edit_paths": [
+    "internal/**",
+    "cmd/**",
+    "migrations/**"
+  ],
+  "protected_paths": [
+    "knowledge-base/**",
+    "graphify/**",
+    ".env",
+    "infra/**"
+  ],
+  "source_files_priority": [
+    "internal/bootstrap/apiserver/http.go",
+    "internal/bootstrap/apiserver/routes.go",
+    "internal/app/"
+  ],
+  "test_paths": [
+    "internal/**",
+    "tests/**"
+  ],
+  "external_systems": [
+    "mysql",
+    "scylla",
+    "redis"
+  ],
+  "mocking_rules": "Use sqlmock / testutil.ExecuteHTTPRequest. Redis must not fail a request (cache writes are best-effort).",
+  "repo_url": "https://github.com/Pocket-Fm/content-backend"
+}

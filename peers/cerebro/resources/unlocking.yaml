@@ -1,0 +1,114 @@
+version: 1
+id: unlocking
+kind: domain
+ontology_id: domain.unlocking
+aliases:
+  - episode-unlocking
+  - show-unlocking
+description: Episode entitlement calculation, unlock persistence, listener-facing lock state, unlock events, and operational repair workflows.
+repositories:
+  - repository: radioly_client_api
+    ownership:
+      type: owned_by
+      target: team.fm-backend-leads
+      source_owner: Pocket-Fm/fm-backend-leads
+      confidence: 1.0
+      evidence:
+        - repository: radioly_client_api
+          path: CODEOWNERS
+          lines: 1-2
+          method: static_analysis
+          confidence: 1.0
+    modules:
+      - path: v3/unlocking
+        apis:
+          - method: GET
+            path: /v3/unlocking/internal/
+          - method: POST
+            path: /v3/unlocking/internal/
+      - path: v3/unlocking_byline
+      - path: v3/internal/endpoints.py
+      - path: external_services/nexus/user_story_unlock_fetcher.py
+      - path: v2/content_api
+        apis:
+          - method: GET
+            path: /v2/content_api/show.get_details
+          - method: GET
+            path: /v2/content_api/show.get_episodes
+          - method: POST
+            path: /v2/content_api/show.deduct
+      - path: v3/content
+        apis:
+          - method: GET
+            path: /v3/content/show.get_details
+          - method: GET
+            path: /v3/content/show.get_episodes
+  - repository: android_client
+    branch: master
+    modules:
+      - path: aural/show
+        apis:
+          - method: GET
+            path: /v3/content/show.get_details
+          - method: GET
+            path: /v3/content/show.get_episodes
+      - path: aural/player
+      - path: aural/payment
+        apis:
+          - method: POST
+            path: /v2/content_api/show.deduct
+          - method: GET
+            path: /v3/payment/paywall
+      - path: network/src/main/java/com/radio/pocketfm/network/service
+        apis:
+          - method: GET
+            path: /v2/content_api/show.get_details
+          - method: GET
+            path: /v2/content_api/show.get_episodes
+          - method: POST
+            path: /v2/content_api/show.unlock_episodes
+  - repository: ios_client
+    branch: master
+    modules:
+      - path: Pocket FM/Data/Networking/ApiUrls.swift
+        apis:
+          - method: GET
+            path: /v2/content_api/show.get_details
+          - method: GET
+            path: /v2/content_api/show.get_episodes
+          - method: POST
+            path: /v2/content_api/show.deduct
+          - method: GET
+            path: /v3/payment/paywall
+      - path: Pocket FM/Data/Service/Purchase
+      - path: Pocket FM/Domain/ServiceProtocol/Purchase
+      - path: Pocket FM/Presentation/Features/PFMShowDetail
+      - path: Pocket FM/Presentation/Features/PFMPlayerView/Components/Story
+      - path: Pocket FM/Presentation/Features/Purchase
+  - repository: kafka-stream-clients
+    branch: master
+    modules:
+      - path: workers/show_unlocks_scylla.py
+      - path: workers/battle_pass_user_show_unlock
+      - path: workers/user_show_playtime_msk/zero_uss_unlock_msk_worker.py
+      - path: workers/reset_rv_keys/rv_unlock.py
+      - path: workers-kafka.json
+  - repository: airflow
+    branch: main
+    modules:
+      - path: unlocking
+      - path: dags/unlocking_alert_dag.py
+      - path: dags/unordered_unlock_reconcile_dag.py
+      - path: dags/unlock_job_tracker_cleanup_dag.py
+      - path: dags/vip_show_unlock_dag.py
+      - path: payments/binge_pass
+      - path: payments/vip_expired_users
+      - path: experience/fm_to_novels.py
+      - path: temporal/payments/activities/binge_pass.py
+      - path: temporal/payments/activities/user_show_unlock_sync.py
+      - path: temporal/payments/workflows/binge_pass_expired_users.py
+      - path: temporal/payments/workflows/binge_pass_pre_expired_users.py
+      - path: temporal/payments/workflows/unlock_job_tracker_cleanup.py
+      - path: temporal/payments/workflows/user_show_unlock_sync.py
+      - path: temporal/payments/config.py
+      - path: temporal/payments/schedules.py

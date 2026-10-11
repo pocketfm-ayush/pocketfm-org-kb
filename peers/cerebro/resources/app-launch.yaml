@@ -1,0 +1,37 @@
+version: 1
+id: app-launch
+kind: domain
+ontology_id: domain.app-launch
+aliases:
+  - client-launch
+  - app-bootstrap
+description: Client bootstrap configuration, initialization, and first-route orchestration.
+repositories:
+  - repository: radioly_client_api
+    modules:
+      - path: v2/feed_api
+        apis:
+          - method: GET
+            path: /v2/feed_api/launch_config
+      - path: v3/experience/inactive_return_popup_suppression
+  - repository: android_client
+    branch: master
+    modules:
+      - path: aural/app
+      - path: aural/start
+  - repository: ios_client
+    branch: master
+    modules:
+      - path: Pocket Fm/App
+      - path: Pocket FM/App
+      - path: Pocket FM/Presentation/Features/PFMOnboardingView/Splash
+      - path: Pocket FM/Data/Model/Configuration
+      - path: Pocket FM/Data/Service/DefaultSplashService.swift
+        apis:
+          - method: GET
+            path: /v2/user_api/get_config
+      - path: Pocket FM/Data/Service/DefaultAppConfigService.swift
+        apis:
+          - method: GET
+            path: /v2/feed_api/launch_config
+      - path: Pocket FMTests/AppPerformanceTests

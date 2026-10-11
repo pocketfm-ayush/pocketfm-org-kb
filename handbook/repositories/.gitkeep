@@ -1,0 +1,2 @@
+# Per-repo org-kb entities land here as repositories/<repository_id>/**/*.md
+# See ../SCHEMA.md. Folders appear when a repo moves from pending → ready.

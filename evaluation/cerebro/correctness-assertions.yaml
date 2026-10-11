@@ -1,0 +1,127 @@
+version: 1
+repository_assertions:
+  - id: P0-1
+    path: knowledge/repositories/iam/generated/flows/account-deactivation-initiation.md
+    contains:
+      - positive day count or `until_login`
+      - inserts a deactivation request
+      - "`users_meta.props.is_deactivated=true`"
+      - invalidates cached user metadata best-effort
+      - publishes `PREFERENCE_UPDATED`
+  - id: P0-2
+    path: knowledge/repositories/iam/generated/flows/access-evaluation.md
+    contains:
+      - Bearer authentication is required
+      - Request-body identity is ignored
+      - X-Envoy-Original-*
+  - id: P0-3
+    path: knowledge/repositories/iam/generated/flows/device-registration-and-maintenance.md
+    contains:
+      - preserves both its stored native platform and app version
+  - id: P0-4
+    path: knowledge/repositories/radioly_client_api/generated/experiments/brahmyodha-internal-test-ad.md
+    fields: {implementation_status: implemented}
+    contains: [active in production is unknown]
+  - id: P0-5
+    path: knowledge/repositories/radioly_client_api/generated/experiments/content-eligible-ads-s2s.md
+    fields: {implementation_status: implemented}
+    contains: [active in production is unknown]
+  - id: P0-6
+    path: knowledge/repositories/radioly_client_api/generated/experiments/india-ds-randomization-audiobook.md
+    fields: {implementation_status: implemented}
+    contains: [active in production is unknown]
+  - id: P0-7
+    path: knowledge/repositories/radioly_client_api/generated/experiments/sy-spinoff-feature-flag.md
+    fields: {implementation_status: implemented}
+    contains: [active in production is unknown]
+  - id: P0-8
+    path: knowledge/repositories/radioly_client_api/generated/experiments/tdmb-spinoff.md
+    fields: {implementation_status: implemented}
+    contains: [running in production is unknown]
+  - id: P0-9
+    path: knowledge/repositories/radioly_client_api/generated/components/radioly-ad-delivery-orchestrator.md
+    contains: [v3/ads/external_ads/ad_manager.py]
+    not_contains: [v3/ads/services/ads_manager.py]
+  - id: P0-10
+    path: knowledge/repositories/iam/generated/flows/authentication-session-lifecycle.md
+    contains:
+      - access JWTs are returned without storage
+      - user refresh tokens are stored in Authentication Session Scylla
+      - device refresh tokens are returned without storage
+  - id: P0-11-authentication
+    path: knowledge/repositories/iam/generated/data_containers/tenant-identity-mysql-authentication.md
+    fields: {status: legacy, implementation_status: legacy}
+    contains: [no current login or token-refresh caller]
+  - id: P0-11-authorization
+    path: knowledge/repositories/iam/generated/data_containers/tenant-identity-mysql-authorization.md
+    fields: {status: legacy, implementation_status: legacy}
+    contains: [no current login or token-refresh caller]
+  - id: P1-16
+    path: knowledge/repositories/nexus/generated/flows/profile-fact-query.md
+    contains:
+      - Both Go and Python clients read Scylla directly
+      - No Redis read or write occurs in this path
+  - id: P1-17
+    path: knowledge/repositories/nexus/generated/data_containers/user-comms-consent.md
+    fields: {status: legacy, implementation_status: legacy}
+    contains: [no active Go or Python reader]
+  - id: P1-18-19
+    path: knowledge/repositories/nexus/seed/domains/nexus.md
+    contains:
+      - eventually consistent
+      - does not guarantee universal read-after-event or read-after-write consistency
+      - do not prove that Nexus is authoritative for every profile field
+  - id: P1-24
+    path: knowledge/repositories/iam/generated/data_containers/iam-mapping-mysql-user-apple-identity.md
+    fields: {datastore: datastore.iam-mapping-mysql}
+  - id: P1-25
+    path: knowledge/repositories/iam/generated/cache_keys/password-reset-email.md
+    fields: {ttl: 10, ttl_unit: minutes}
+  - id: P1-26
+    path: knowledge/repositories/iam/generated/cache_keys/oauth2-grant-code.md
+    fields: {ttl: 10, ttl_unit: minutes}
+  - id: P2-27-android
+    path: knowledge/repositories/android_client/generated/interfaces/aural-ads-http-client.md
+    relationships:
+      - {type: consumes, target: interface.radioly-playback-ads-http-api}
+  - id: P2-27-ios
+    path: knowledge/repositories/ios_client/generated/interfaces/ios-ads-client.md
+    relationships:
+      - {type: consumes, target: interface.radioly-playback-ads-http-api}
+  - id: P2-28-android
+    path: knowledge/repositories/android_client/generated/interfaces/aural-authentication-http-client.md
+    relationships:
+      - {type: consumes, target: interface.authentication-http-api}
+  - id: P2-28-ios
+    path: knowledge/repositories/ios_client/generated/interfaces/ios-iam-client.md
+    relationships:
+      - {type: consumes, target: interface.authentication-http-api}
+  - id: P2-29-android
+    path: knowledge/repositories/android_client/generated/interfaces/aural-onboarding-http-client.md
+    relationships:
+      - {type: calls, target: interface.radioly-login-configuration-http-api}
+  - id: P2-29-ios
+    path: knowledge/repositories/ios_client/generated/interfaces/ios-device-profile-client.md
+    relationships:
+      - {type: calls, target: interface.radioly-login-configuration-http-api}
+  - id: P2-30-android
+    path: knowledge/repositories/android_client/generated/interfaces/aural-show-play-details-client.md
+    relationships:
+      - {type: consumes, target: interface.apollo-licensing-http-api}
+  - id: P2-30-ios
+    path: knowledge/repositories/ios_client/generated/interfaces/ios-show-play-details-client.md
+    relationships:
+      - {type: consumes, target: interface.apollo-licensing-http-api}
+  - id: P2-33
+    path: knowledge/repositories/impression/generated/services/impression-service.md
+    contains: [stores time-bucketed counts in ScyllaDB]
+  - id: P2-34
+    path: knowledge/repositories/impression/seed/features/record-impressions.md
+    contains: [Shorts]
+merged_assertions:
+  - id: P3-35-36
+    path: knowledge/merged/documents/document.cerebro-canonical-metadata.md
+    contains:
+      - The live ontology version is 2.5
+      - knowledge/repositories/<repository-id>/
+      - not canonical knowledge stores

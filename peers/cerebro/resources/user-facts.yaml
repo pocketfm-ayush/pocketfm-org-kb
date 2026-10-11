@@ -1,0 +1,10 @@
+version: 1
+id: user-facts
+kind: domain
+ontology_id: domain.nexus
+aliases:
+  - nexus
+  - user-data-platform
+description: Eventually consistent user, device, communication-preference, and story-unlock facts.
+repositories:
+  - repository: nexus

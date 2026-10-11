@@ -1,0 +1,28 @@
+# Feature slug ↔ product module (Search)
+feature_to_product:
+  campaign-only-shows: campaign-only-shows
+  genre-trope-discovery: genre-trope-discovery
+  disabled-show-removal: disabled-show-removal
+  me-show-exclusion: me-show-exclusion
+  language-biased-search: language-biased-search
+  ai-pgc-replacement: ai-pgc-replacement
+  universal-search: universal-search
+  ds-thumbnails: ds-thumbnails
+  override-show-filter: override-show-filter
+  show-filter: show-filter
+  response-caching: response-caching
+  query-processing: query-processing
+product_to_feature:
+  me-show-exclusion: me-show-exclusion
+  campaign-only-shows: campaign-only-shows
+  response-caching: response-caching
+  disabled-show-removal: disabled-show-removal
+  universal-search: universal-search
+  ds-thumbnails: ds-thumbnails
+  language-biased-search: language-biased-search
+  show-filter: show-filter
+  ai-pgc-replacement: ai-pgc-replacement
+  genre-trope-discovery: genre-trope-discovery
+  override-show-filter: override-show-filter
+  query-processing: query-processing
+notes: Search feature and product slugs match 1:1.

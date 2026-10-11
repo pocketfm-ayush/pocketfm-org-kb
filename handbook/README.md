@@ -1,25 +1,33 @@
-# Handbook
+# Handbook (Lane A)
 
-Canonical **meaning + evidence** for Pocket FM (Lane A / Org Brain).
+Canonical **meaning + evidence** for Pocket FM services.
 
-## Workflow
+Migrated from `content-knowledge-base/org-handbook/` and refreshed against
+local clone HEADs via `scripts/refresh_evidence_from_clones.py`.
 
-1. Add or update the repo in `catalog.yaml` (`status: pending`).
-2. Distill from the app repo at a fixed SHA → write entities under
-   `repositories/<repo_id>/`.
-3. Run `make validate`.
-4. Set `status: ready` when validation is green.
-5. Open a PR. After merge, sync LightRAG / org-brain indexes (never mutate
-   live mid-sync).
+## Layout
 
-## Migration from content-knowledge-base
+```text
+handbook/
+  catalog.yaml           # 31 repos, waves P0–P3
+  SCHEMA.md
+  repositories/<id>/     # flow|service|capability|interface entities
+  scripts/validate_org_kb.py
+  lightrag/              # projection helpers (process runs separately)
+```
 
-Existing entities live under
-`content-knowledge-base/org-handbook/repositories/`. Prefer copying validated
-entities here, then keep CKB as a thin pointer or deprecate the nested path
-once Groot reads `ORG_BRAIN_INSTANCE` / this handbook.
+## Validate
 
-## Example entity
+```bash
+python3 handbook/scripts/validate_org_kb.py
+# or: make validate
+```
 
-See `repositories/_example/service/service.example.md` (not a real service —
-template only).
+## Update from source
+
+```bash
+# 1. git pull sibling app repos
+# 2. refresh SHAs where paths still exist
+make refresh-evidence
+# 3. for new meaning: distill entity at fixed SHA, then validate
+```

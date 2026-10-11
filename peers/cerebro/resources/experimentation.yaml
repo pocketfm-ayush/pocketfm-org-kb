@@ -1,0 +1,31 @@
+version: 1
+id: experimentation
+kind: domain
+ontology_id: domain.experimentation
+aliases:
+  - experiments
+  - ab-experimentation
+description: Experiment definition, assignment, eligibility, treatment allocation, and client consumption.
+repositories:
+  - repository: radioly_client_api
+    modules:
+      - path: v2/experiments
+      - path: v2/feed_api
+        apis:
+          - method: GET
+            path: /v2/feed_api/launch_config
+  - repository: android_client
+    modules:
+      - path: aural/start/data
+      - path: aural/onboarding
+        apis:
+          - method: GET
+            path: /v3/onboarding/onboarding_config
+          - method: GET
+            path: /v3/onboarding/genres
+          - method: POST
+            path: /v3/onboarding/genres
+          - method: GET
+            path: /v3/onboarding/show-discovery
+          - method: POST
+            path: /v3/onboarding/show-discovery

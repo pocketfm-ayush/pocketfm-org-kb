@@ -1,0 +1,168 @@
+version: 1
+id: experience-pod
+kind: domain
+ontology_id: domain.experience-pod
+aliases:
+  - experience
+description: User experience configuration, engagement surfaces, streaks, surveys, car mode, AI recap, and character chat across the legacy Python service and its Go migration.
+repositories:
+  - repository: radioly_client_api
+    modules:
+      - path: v2/campaigns/faqs
+        apis:
+          - method: GET
+            path: /v2/faq/search/
+      - path: v2/content_api
+        apis:
+          - method: GET
+            path: /v2/content_api/show-character-info/
+      - path: v2/miscellaneous
+        apis:
+          - method: POST
+            path: /v2/miscellaneous/store_verification_email/
+      - path: v2/miscellaneous/continuous_streak
+        apis:
+          - method: GET
+            path: /v2/payment/continuos_streak/get_streak_details/
+          - method: POST
+            path: /v2/payment/continuos_streak/post_streak/
+      - path: v2/push_notification
+        apis:
+          - method: GET
+            path: /v2/push_notification/get_notification_data
+      - path: v2/user_api
+        apis:
+          - method: GET
+            path: /v2/user_api/user.onb_states
+          - method: GET
+            path: /v2/user_api/user.feedback_popup_dialog
+          - method: POST
+            path: /v2/user_api/user.submit_feedback_popup
+          - method: GET
+            path: /v2/user_api/profile_benefits
+          - method: GET
+            path: /v2/user_api/user.get_top_3_most_listened_shows_for_user
+      - path: v3/car_mode
+        apis:
+          - method: GET
+            path: /v3/car_mode/get_device_type
+          - method: GET
+            path: /v3/car_mode/get_top_shows
+      - path: v3/experience
+        apis:
+          - method: GET
+            path: /v3/experience/foreground_config
+          - method: GET
+            path: /v3/experience/streak/config
+          - method: GET
+            path: /v3/experience/fallback-manifests
+          - method: GET
+            path: /v3/experience/show_ai_recap/show.get_ai_recap
+          - method: POST
+            path: /v3/experience/gtm/ack_impression
+          - method: GET
+            path: /v3/experience/auto_debit/manage_shows
+          - method: GET
+            path: /v3/experience/character-chat/details
+          - method: POST
+            path: /v3/experience/pvt/character-chat/build-prompt
+          - method: GET
+            path: /v3/experience/story-evolution/details
+          - method: GET
+            path: /v3/experience/internal/banner
+      - path: v3/experience/onboarding
+        apis:
+          - method: GET
+            path: /v3/onboarding/genres
+      - path: v3/user_survey
+        apis:
+          - method: GET
+            path: /v2/survey/user_survey/
+          - method: POST
+            path: /v2/survey/user_survey/
+  - repository: android_client
+    branch: master
+    modules:
+      - path: aural/autodebit
+      - path: aural/chatbot
+      - path: aural/home
+      - path: aural/onboarding
+      - path: aural/show
+      - path: aural/streaks
+      - path: aural/survey
+  - repository: ios_client
+    branch: master
+    modules:
+      - path: Pocket FM/Data/Managers/EpisodeRecap
+      - path: Pocket FM/Data/Model/AICharacterChat
+      - path: Pocket FM/Data/Model/Survey
+      - path: Pocket FM/Data/Repository/AppRating
+      - path: Pocket FM/Data/Repository/Streaks
+      - path: Pocket FM/Data/Service/AppRating
+      - path: Pocket FM/Data/Service/Streaks
+      - path: Pocket FM/Data/UseCase/AppRating
+      - path: Pocket FM/Data/UseCase/Streaks
+      - path: Pocket FM/Domain/RepositoryProtocol/AppRating
+      - path: Pocket FM/Domain/RepositoryProtocol/Streaks
+      - path: Pocket FM/Domain/ServiceProtocol/AppRating
+      - path: Pocket FM/Domain/ServiceProtocol/Streaks
+      - path: Pocket FM/Domain/UseCaseProtocol/AppRating
+      - path: Pocket FM/Domain/UseCaseProtocol/Streaks
+      - path: Pocket FM/Presentation/Features/AutoDebit
+      - path: Pocket FM/Presentation/Features/InAppSurvey
+      - path: Pocket FM/Presentation/Features/PFMAppRatingView
+      - path: Pocket FM/Presentation/Features/PFMPlayerView/Components/CarMode
+      - path: Pocket FM/Presentation/Features/PFMPlayerView/Components/Recap
+      - path: Pocket FM/Presentation/Features/PFMStreaks
+      - path: Pocket FM/Presentation/PFMAICharacterChat
+      - path: Pocket FM/Data/Networking/ApiUrls.swift
+        apis:
+          - method: GET
+            path: /v2/user_api/user.feedback_popup_dialog
+          - method: POST
+            path: /v2/user_api/user.submit_feedback_popup
+          - method: GET
+            path: /v2/user_api/profile_benefits
+          - method: GET
+            path: /v2/payment/continuos_streak/get_streak_details/
+          - method: POST
+            path: /v2/payment/continuos_streak/post_streak/
+          - method: GET
+            path: /v2/survey/user_survey/
+          - method: POST
+            path: /v2/survey/user_survey/
+          - method: GET
+            path: /v3/car_mode/get_device_type
+          - method: GET
+            path: /v3/car_mode/get_top_shows
+          - method: GET
+            path: /v3/experience/foreground_config
+          - method: GET
+            path: /v3/experience/streak/config
+          - method: GET
+            path: /v3/experience/show_ai_recap/show.get_ai_recap
+          - method: POST
+            path: /v3/experience/gtm/ack_impression
+          - method: GET
+            path: /v3/experience/auto_debit/manage_shows
+          - method: GET
+            path: /v3/experience/character-chat/details
+          - method: POST
+            path: /v1/experience/character-chat/message
+          - method: GET
+            path: /v3/onboarding/genres
+  - repository: kafka-stream-clients
+    branch: master
+    modules:
+      - path: workers/experience
+      - path: workers/constants.py
+      - path: workers-kafka.json
+  - repository: airflow
+    branch: main
+    modules:
+      - path: experience
+      - path: temporal/experience
+      - path: temporal/scripts/sync_schedules.py
+      - path: .github/workflows/temporal-sync-schedules.yml
+  - repository: experience
+    branch: main

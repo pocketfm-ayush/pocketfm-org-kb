@@ -1,0 +1,42 @@
+{
+  "name": "ios_client",
+  "language": "swift",
+  "framework": "swiftui",
+  "pack_path": "ios-client",
+  "graph_path": "ios-client/graphify/graphify-out/graph.json",
+  "knowledge_base_path": "ios-client/knowledge-base",
+  "default_base": "master",
+  "test_command": "xcodebuild test -workspace \"Pocket FM.xcworkspace\" -scheme \"Pocket FMTests\" -destination 'platform=iOS Simulator,name=iPhone 16' -configuration Debug",
+  "check_command": "swiftlint",
+  "max_repair_iterations": 3,
+  "allowed_edit_paths": [
+    "Pocket FM/**",
+    "Pocket FMTests/**",
+    "Pocket FM-UITests/**"
+  ],
+  "protected_paths": [
+    "knowledge-base/**",
+    "graphify/**",
+    "Pods/**",
+    "fastlane/**",
+    "**/*.xcuserstate",
+    "**/*.p8",
+    "**/*.mobileprovision"
+  ],
+  "source_files_priority": [
+    "Pocket FM/Presentation/Features/",
+    "Pocket FM/Domain/",
+    "Pocket FM/Data/",
+    "Pocket FM/Core/"
+  ],
+  "test_paths": [
+    "Pocket FMTests/**",
+    "Pocket FM-UITests/**"
+  ],
+  "external_systems": [
+    "radioly",
+    "content-backend"
+  ],
+  "mocking_rules": "Decoding stays in DataTransferService \u2014 never in ViewModels. Domain must not import SwiftUI/UIKit.",
+  "repo_url": "https://github.com/Pocket-Fm/ios_client"
+}

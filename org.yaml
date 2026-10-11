@@ -14,13 +14,11 @@ models:
   extraction_model_env: ORG_BRAIN_EXTRACTION_MODEL
   answer_model_env: ORG_BRAIN_ANSWER_MODEL
 
-# Paths are relative to a sibling checkout layout under ../
-# Override paths locally; prefer GitHub URLs in CI/hosted bootstrap.
+# Sibling checkouts under ../ (Work/Repo). github URLs used when path absent.
 sources:
   repositories:
-    # --- P0 consumer / identity ---
     - id: radioly_client_api
-      path: ../radioly
+      path: ../radioly_client_api
       github: https://github.com/Pocket-Fm/radioly_client_api.git
       revision: HEAD
       access_scope: read-only
@@ -54,8 +52,6 @@ sources:
       access_scope: read-only
       enabled: true
       wave: P0
-
-    # --- P1 platform ---
     - id: kafka-stream-clients
       path: ../kafka-stream-clients
       github: https://github.com/Pocket-Fm/kafka-stream-clients.git
@@ -70,27 +66,6 @@ sources:
       access_scope: read-only
       enabled: true
       wave: P1
-    - id: fabric
-      path: ../fabric
-      github: https://github.com/Pocket-Fm/fabric.git
-      revision: HEAD
-      access_scope: read-only
-      enabled: true
-      wave: P1
-    - id: content-backend
-      path: ../content-backend
-      github: https://github.com/Pocket-Fm/content-backend.git
-      revision: HEAD
-      access_scope: read-only
-      enabled: true
-      wave: P1
-    - id: go-common
-      path: ../go-common
-      github: https://github.com/Pocket-Fm/go-common.git
-      revision: HEAD
-      access_scope: read-only
-      enabled: true
-      wave: P1
     - id: apollo
       path: ../apollo
       github: https://github.com/Pocket-Fm/apollo.git
@@ -98,8 +73,51 @@ sources:
       access_scope: read-only
       enabled: true
       wave: P1
-
-    # --- P2 product surfaces ---
+    - id: impression
+      path: ../fabric
+      github: https://github.com/Pocket-Fm/fabric.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P1
+      notes: code under fabric/impression
+    - id: go-common
+      path: ../go-common
+      github: https://github.com/Pocket-Fm/go-common.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P1
+    - id: python-common
+      path: ../python-common
+      github: https://github.com/Pocket-Fm/python-common.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P1
+    - id: experience
+      path: ../airflow
+      github: https://github.com/Pocket-Fm/airflow.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P1
+      notes: domain under airflow temporal/experience
+    - id: content-backend
+      path: ../content-backend
+      github: https://github.com/Pocket-Fm/content-backend.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P1
+    - id: ads
+      path: ../airflow
+      github: https://github.com/Pocket-Fm/airflow.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P1
+      notes: domain under airflow temporal/ads
     - id: go-radioly
       path: ../go-radioly-service
       github: https://github.com/Pocket-Fm/go-radioly-service.git
@@ -107,9 +125,79 @@ sources:
       access_scope: read-only
       enabled: true
       wave: P2
-    - id: pocket_search
-      path: ../search
-      github: https://github.com/Pocket-Fm/pocket_search.git
+    - id: raven
+      path: ../raven
+      github: https://github.com/Pocket-Fm/raven.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P2
+    - id: fabric
+      path: ../fabric
+      github: https://github.com/Pocket-Fm/fabric.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P2
+    - id: media-forge
+      github: https://github.com/Pocket-Fm/media-forge.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: false
+      wave: P2
+      notes: blocked / inaccessible
+    - id: writers-backend
+      path: ../writers-backend
+      github: https://github.com/Pocket-Fm/writers-backend.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P2
+    - id: ugc-backend
+      github: https://github.com/Pocket-Fm/ugc-backend.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: false
+      wave: P2
+      notes: blocked
+    - id: ugc-ui
+      github: https://github.com/Pocket-Fm/ugc-ui.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: false
+      wave: P2
+      notes: blocked
+    - id: ugc-tts-worker
+      github: https://github.com/Pocket-Fm/ugc-tts-worker.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: false
+      wave: P2
+      notes: blocked
+    - id: cms-dashboard-backend
+      path: ../cms-dashboard-backend
+      github: https://github.com/Pocket-Fm/cms-dashboard-backend.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P2
+    - id: prod_novels_cron_airflow
+      path: ../prod_novels_cron_airflow
+      github: https://github.com/Pocket-Fm/prod_novels_cron_airflow.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P2
+    - id: novels-kafka-stream-client
+      path: ../Novels-Kafka-Stream-Clients
+      github: https://github.com/Pocket-Fm/Novels-Kafka-Stream-Clients.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P2
+    - id: writers_payout_airflow
+      path: ../writers_payout_airflow
+      github: https://github.com/Pocket-Fm/writers_payout_airflow.git
       revision: HEAD
       access_scope: read-only
       enabled: true
@@ -121,22 +209,13 @@ sources:
       access_scope: read-only
       enabled: true
       wave: P2
-    - id: cms-dashboard-backend
-      path: ../cms-dashboard-backend
-      github: https://github.com/Pocket-Fm/cms-dashboard-backend.git
+    - id: pocket_search
+      path: ../pocket_search
+      github: https://github.com/Pocket-Fm/pocket_search.git
       revision: HEAD
       access_scope: read-only
       enabled: true
       wave: P2
-    - id: groot
-      path: ../groot
-      github: https://github.com/Pocket-Fm/groot.git
-      revision: HEAD
-      access_scope: read-only
-      enabled: true
-      wave: P2
-
-    # --- P3 infra (docs-safe only) ---
     - id: infra-deployments-k8s
       path: ../Infra_deployments_k8s
       github: https://github.com/Pocket-Fm/Infra_deployments_k8s.git
@@ -144,7 +223,7 @@ sources:
       access_scope: read-only
       enabled: true
       wave: P3
-      notes: docs-safe paths only; no secrets
+      notes: docs-safe paths only
     - id: infra-k8s
       path: ../Infra_k8s
       github: https://github.com/Pocket-Fm/Infra_k8s.git
@@ -153,6 +232,20 @@ sources:
       enabled: true
       wave: P3
       notes: docs-safe paths only
+    - id: infra-docs
+      path: ../infra_docs
+      github: https://github.com/Pocket-Fm/infra_docs.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P3
+    - id: groot
+      path: ../groot
+      github: https://github.com/Pocket-Fm/groot.git
+      revision: HEAD
+      access_scope: read-only
+      enabled: true
+      wave: P2
 
   documentation:
     enabled: true
@@ -162,17 +255,18 @@ sources:
     path: ./memory/incidents
   observability:
     enabled: false
-    notes: Wire Sherlock / OTel via connectors when approved
+    notes: Phase 7 — enable otel.http / Sherlock when approved
 
-  # Sibling knowledge systems (not code sources — sync adapters)
   knowledge_peers:
     content_knowledge_base:
       github: https://github.com/Pocket-Fm/content-knowledge-base.git
       local_path: ../content-knowledge-base
-      role: groot_packs
+      role: groot_packs_upstream
+      mirrored_in: ./packs
     cerebro_knowledge:
       local_path: ../cerebro-knowledge
       role: cross_repo_semantics
+      mirrored_resources: ./peers/cerebro/resources
 
 connectors:
   mcp:

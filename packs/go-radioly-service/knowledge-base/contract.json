@@ -1,0 +1,45 @@
+{
+  "name": "go-radioly-service",
+  "language": "go",
+  "framework": "gin",
+  "pack_path": "go-radioly-service",
+  "graph_path": "go-radioly-service/graphify/graphify-out/graph.json",
+  "knowledge_base_path": "go-radioly-service/knowledge-base",
+  "default_base": "main",
+  "test_command": "make test",
+  "check_command": "make lint",
+  "max_repair_iterations": 3,
+  "allowed_edit_paths": [
+    "internal/**",
+    "cmd/**"
+  ],
+  "protected_paths": [
+    "knowledge-base/**",
+    "graphify/**",
+    ".env",
+    "infra/**",
+    "config.yaml"
+  ],
+  "source_files_priority": [
+    "cmd/main.go",
+    "internal/gateway/",
+    "internal/eventrouter/",
+    "internal/exporter/"
+  ],
+  "test_paths": [
+    "internal/**"
+  ],
+  "external_systems": [
+    "kafka",
+    "mysql",
+    "scylla",
+    "redis",
+    "s3",
+    "tiktok",
+    "firebase",
+    "appsflyer",
+    "meta"
+  ],
+  "mocking_rules": "Do not call live exporter APIs in unit tests. Gateway batch ingest always returns HTTP 200; per-event failures go to DLQ.",
+  "repo_url": "https://github.com/Pocket-Fm/go-radioly-service"
+}

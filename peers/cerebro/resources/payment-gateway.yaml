@@ -1,0 +1,132 @@
+version: 1
+id: payment-gateway
+kind: domain
+ontology_id: domain.payment-gateway
+aliases:
+  - fm-gateway
+description: Payment gateway selection, transaction initiation and validation, callbacks, reconciliation, refunds, and purchase clients.
+repositories:
+  - repository: radioly_client_api
+    ownership:
+      type: owned_by
+      target: team.monet-leads
+      source_owner: Pocket-Fm/monet-leads
+      confidence: 1.0
+      evidence:
+        - repository: radioly_client_api
+          path: CODEOWNERS
+          lines: 10-14
+          method: static_analysis
+          confidence: 1.0
+    modules:
+      - path: v2/payments
+      - path: v2/experiments/payments
+      - path: v2/tests/payments
+      - path: v3/payments
+      - path: v2/integrations/airtel
+        apis:
+          - method: POST
+            path: /v2/integrations/airtel/subscription
+          - method: GET
+            path: /v2/integrations/airtel/subscription/{order_id}
+          - method: DELETE
+            path: /v2/integrations/airtel/subscription/{order_id}
+          - method: GET
+            path: /v2/integrations/airtel-promotion
+          - method: POST
+            path: /v2/integrations/airtel-promotion/claim
+  - repository: android_client
+    branch: master
+    modules:
+      - path: aural/payment
+      - path: aural/autodebit
+  - repository: ios_client
+    branch: master
+    modules:
+      - path: Pocket FM/Core/AppState/Global+Payment.swift
+      - path: Pocket FM/Core/Helpers/PFMPendingPaymentEvents.swift
+      - path: Pocket FM/Data/Repository/Purchase
+      - path: Pocket FM/Data/Managers/Purchase
+      - path: Pocket FM/Data/Model/Purchase
+      - path: Pocket FM/Data/Service/Purchase
+      - path: Pocket FM/Data/UseCase/Purchase
+      - path: Pocket FM/Domain/RepositoryProtocol/Purchase
+      - path: Pocket FM/Domain/ServiceProtocol/Purchase
+      - path: Pocket FM/Domain/UseCaseProtocol/Purchase
+      - path: Pocket FM/Presentation/Features/Purchase
+      - path: Pocket FM/Data/Repository/DefaultPFMAutoDebitRepository.swift
+      - path: Pocket FM/Data/Service/DefaultPFMAutoDebitService.swift
+      - path: Pocket FM/Data/UseCase/DefaultPFMAutoDebitUseCase.swift
+      - path: Pocket FM/Domain/RepositoryProtocol/PFMAutoDebitRepository.swift
+      - path: Pocket FM/Domain/ServiceProtocol/PFMAutoDebitService.swift
+      - path: Pocket FM/Domain/UseCaseProtocol/PFMAutoDebitUseCase.swift
+      - path: Pocket FM/Presentation/Features/AutoDebit
+      - path: Pocket FM/Data/Networking/ApiUrls.swift
+        apis:
+          - method: GET
+            path: /v3/payment/paywall
+          - method: GET
+            path: /v3/payment/plans/
+          - method: GET
+            path: /v3/payment/faqs/
+          - method: GET
+            path: /v3/payment/post_purchase_config/
+          - method: GET
+            path: /v3/payment/events
+          - method: GET
+            path: /v3/payment/top-nudge
+          - method: GET
+            path: /v3/payment/subscriptions
+          - method: GET
+            path: /v3/payment/gamified-rewards
+          - method: POST
+            path: /v3/payment/gamified-rewards
+          - method: POST
+            path: /v2/payment/generate_order/
+          - method: GET
+            path: /v2/payment/get_payment_options
+          - method: POST
+            path: /v2/payment/update_order_status
+          - method: GET
+            path: /v2/payment/get_transaction_status
+          - method: POST
+            path: /v2/payment/subscription.cancel
+      - path: Pocket FMTests/Purchase
+      - path: Pocket FMTests/Payments
+      - path: Pocket FMTests/PurchaseVM
+      - path: Pocket FMTests/PurchaseThreshold
+  - repository: kafka-stream-clients
+    modules:
+      - path: workers/payments
+      - path: workers/subscription_validation
+      - path: workers-kafka.json
+  - repository: airflow
+    branch: main
+    ownership:
+      type: owned_by
+      target: team.monetization
+      source_owner: Pocket-Fm/monetization
+      confidence: 1.0
+      evidence:
+        - repository: airflow
+          path: CODEOWNERS
+          lines: 5
+          method: static_analysis
+          confidence: 1.0
+    modules:
+      - path: payments
+        platform: server
+        resource_kind: backend
+        languages: [Python]
+      - path: temporal/payments
+        platform: server
+        resource_kind: backend
+        languages: [Python]
+      - path: temporal/scripts/sync_schedules.py
+        platform: server
+        resource_kind: backend
+        languages: [Python]
+      - path: .github/workflows/temporal-sync-schedules.yml
+        platform: shared
+        resource_kind: infra
+        languages: [YAML]

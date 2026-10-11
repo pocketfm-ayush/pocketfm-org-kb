@@ -1,0 +1,53 @@
+version: 1
+id: onboarding
+kind: domain
+ontology_id: domain.onboarding
+aliases:
+  - new-user-onboarding
+  - profile-onboarding
+description: New-user profile setup, preference collection, content selection, and onboarding completion.
+repositories:
+  - repository: radioly_client_api
+    modules:
+      - path: v3/experience/onboarding
+        apis:
+          - method: GET
+            path: /v3/onboarding/onboarding_config
+          - method: GET
+            path: /v3/onboarding/genres
+          - method: POST
+            path: /v3/onboarding/genres
+          - method: GET
+            path: /v3/onboarding/show-discovery
+          - method: POST
+            path: /v3/onboarding/show-discovery
+      - path: v2/feed_api
+        apis:
+          - method: GET
+            path: /v2/feed_api/get_onb_show_selection_feed
+          - method: POST
+            path: /v2/feed_api/show.onboarding
+      - path: v2/profiles
+        apis:
+          - method: PATCH
+            path: /v2/profiles/profile/{profile_id}/
+  - repository: android_client
+    modules:
+      - path: aural/onboarding
+        apis:
+          - method: GET
+            path: /v3/onboarding/onboarding_config
+          - method: GET
+            path: /v3/onboarding/genres
+          - method: POST
+            path: /v3/onboarding/genres
+          - method: GET
+            path: /v3/onboarding/show-discovery
+          - method: POST
+            path: /v3/onboarding/show-discovery
+          - method: GET
+            path: /v2/feed_api/get_onb_show_selection_feed
+          - method: POST
+            path: /v2/feed_api/show.onboarding
+          - method: PATCH
+            path: /v2/profiles/profile/{profile_id}/

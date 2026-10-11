@@ -1,0 +1,69 @@
+feature_to_product:
+  kafka-workers: kafka-workers
+  listening-playtime: listening-playtime
+  video-impressions: video-impressions
+  show-unlocks-and-battle-pass: show-unlocks-and-battle-pass
+  wallet-coins-and-recon: wallet-coins-and-recon
+  subscription-lifecycle: subscription-lifecycle
+  ads-playtime-streaks-and-offerwall: ads-playtime-streaks-and-offerwall
+  s2s-attribution-and-moengage: s2s-attribution-and-moengage
+  experience-reengage-and-discover: experience-reengage-and-discover
+  feeds-packaged-deployment: feeds-packaged-deployment
+  account-actions-and-deactivation: account-actions-and-deactivation
+  comms-whatsapp-email-push: comms-whatsapp-email-push
+  referral-rewards: referral-rewards
+  budget-booster: budget-booster
+  budget-booster-worker: budget-booster  # catalog alias → product module / feature folder
+  content-throttling-rewards: content-throttling-rewards
+  continue-playing-cleanup: continue-playing-cleanup
+  reactivation-dumps: reactivation-dumps
+  autoplay-dumps: autoplay-dumps
+  auto-debit-reset: auto-debit-reset
+  be-events: be-events
+  character-sheets: character-sheets
+  content-moderation-ranking: content-moderation-ranking
+  machine-translation: machine-translation
+  mini-series-launch: mini-series-launch
+  user-default-tab: user-default-tab
+  loyalty-moengage-tags: loyalty-moengage-tags
+  entity-stats: entity-stats
+  feedback-popup: feedback-popup
+  appsflyer-device-campaign: appsflyer-device-campaign
+product_to_feature:
+  kafka-workers: kafka-workers
+  listening-playtime: listening-playtime
+  video-impressions: video-impressions
+  show-unlocks-and-battle-pass: show-unlocks-and-battle-pass
+  wallet-coins-and-recon: wallet-coins-and-recon
+  subscription-lifecycle: subscription-lifecycle
+  ads-playtime-streaks-and-offerwall: ads-playtime-streaks-and-offerwall
+  s2s-attribution-and-moengage: s2s-attribution-and-moengage
+  experience-reengage-and-discover: experience-reengage-and-discover
+  feeds-packaged-deployment: feeds-packaged-deployment
+  account-actions-and-deactivation: account-actions-and-deactivation
+  comms-whatsapp-email-push: comms-whatsapp-email-push
+  referral-rewards: referral-rewards
+  budget-booster: budget-booster
+  budget-booster-worker: budget-booster  # catalog alias → feature folder
+  content-throttling-rewards: content-throttling-rewards
+  continue-playing-cleanup: continue-playing-cleanup
+  reactivation-dumps: reactivation-dumps
+  autoplay-dumps: autoplay-dumps
+  auto-debit-reset: auto-debit-reset
+  be-events: be-events
+  character-sheets: character-sheets
+  content-moderation-ranking: content-moderation-ranking
+  machine-translation: machine-translation
+  mini-series-launch: mini-series-launch
+  user-default-tab: user-default-tab
+  loyalty-moengage-tags: loyalty-moengage-tags
+  entity-stats: entity-stats
+  feedback-popup: feedback-popup
+  appsflyer-device-campaign: appsflyer-device-campaign
+notes: >
+  Catalog entry point is kafka-workers. Other feature folders are domain slices.
+  Family twins — not one overview per worker entry in workers-kafka-*.sh.
+  Confirm Relay vs these workers for S2S ownership per event.
+  Catalog features map routes Budget Booster product to radioly (`budget-booster`);
+  worker twin catalog slug `budget-booster-worker` aliases to feature/pfm-kb
+  `budget-booster` via both maps above.

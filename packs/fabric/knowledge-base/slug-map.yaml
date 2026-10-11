@@ -1,0 +1,30 @@
+feature_to_product:
+  impression-tracking: impression-counts
+  impression-ingest-consumer: impression-ingest
+  gtm-impression-whitelist: gtm-asset-whitelist
+  ads-impression-ingest: ads-impression-counts
+  impression-client-go: impression-go-client
+  impression-client-py: impression-python-client
+  playtime-tracking: playtime-tracking
+  audio-playtime-ingest: audio-playtime-ingest
+  feed-show-exclusion: feed-show-exclusion
+  ai-pgc-playtime-sync: ai-pgc-playtime-sync
+  playtime-content-client: playtime-content-client
+  temporal-namespaces: temporal-namespaces
+product_to_feature:
+  impression-counts: impression-tracking
+  impression-ingest: impression-ingest-consumer
+  gtm-asset-whitelist: gtm-impression-whitelist
+  ads-impression-counts: ads-impression-ingest
+  impression-go-client: impression-client-go
+  impression-python-client: impression-client-py
+  playtime-tracking: playtime-tracking
+  audio-playtime-ingest: audio-playtime-ingest
+  feed-show-exclusion: feed-show-exclusion
+  ai-pgc-playtime-sync: ai-pgc-playtime-sync
+  playtime-content-client: playtime-content-client
+  temporal-namespaces: temporal-namespaces
+notes: >
+  Catalog slugs impression-tracking and playtime-tracking remain primary umbrellas.
+  Temporal namespaces are ops/platform, not a listener product journey.
+  Core audio ingest mode may still be incomplete — verify before claiming.

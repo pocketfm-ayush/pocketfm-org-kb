@@ -32,9 +32,10 @@ and not the Org Brain engine.
 | New service in scope | `org.yaml` + `handbook/catalog.yaml` |
 | Meaning / flow / capability | `handbook/repositories/<id>/…` |
 | Incident / lesson / ADR | `memory/` |
-| Golden eval question | `evaluation/datasets/` |
+| Golden eval question | `evaluation/` |
 | ACL / write power | `policies.yaml` |
-| Groot pack content | content-knowledge-base (not here) |
+| Groot pack content | `packs/<pack>/` (mirror upstream CKB) |
+| Evidence after app merges | `make refresh-evidence` |
 | Engine bug / connector | org-kb master |
 
 ## Non-goals

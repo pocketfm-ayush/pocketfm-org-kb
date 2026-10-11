@@ -1,0 +1,61 @@
+{
+  "name": "radioly_client_api",
+  "language": "python",
+  "framework": "django",
+  "pack_path": "radioly",
+  "graph_path": "radioly/graphify/graphify-out/graph.json",
+  "knowledge_base_path": "radioly/knowledge-base",
+  "default_base": "main",
+  "test_command": "make test",
+  "check_command": "make ruff",
+  "max_repair_iterations": 3,
+  "allowed_edit_paths": [
+    "v2/**",
+    "v3/**",
+    "content_api/**",
+    "feed_api/**",
+    "user_api/**",
+    "radioly_api/**",
+    "tests/**"
+  ],
+  "protected_paths": [
+    "knowledge-base/**",
+    "graphify/**",
+    ".env",
+    "**/*.env",
+    "local.env",
+    "authorization_json",
+    "infra/**",
+    "docker_dev/**",
+    "quality_gating/reports/**"
+  ],
+  "source_files_priority": [
+    "v3/feed_api/",
+    "v3/experience/",
+    "v2/feed_api/",
+    "v2/content_api/",
+    "manage.py"
+  ],
+  "test_paths": [
+    "tests/**",
+    "v2/tests/**",
+    "v2/**/tests/**",
+    "v2/**/test_*.py",
+    "v3/**/tests/**",
+    "v3/**/test_*.py"
+  ],
+  "ci_notes": {
+    "impacted_tests": "scripts/get_impacted_tests.py walks up to a sibling tests/ dir and can miss co-located test_*.py (e.g. v3/content/latam_modules/test_views.py → wrongly v3/content/tests). Always keep module tests co-located AND ensure Groot/CI run those files explicitly.",
+    "diff_cover": "PR pytest workflow fails under 80% diff-cover on changed production .py files. New lines must be executed by the impacted test set."
+  },
+  "external_systems": [
+    "mysql",
+    "redis",
+    "scylla",
+    "elasticsearch",
+    "kafka",
+    "s3"
+  ],
+  "mocking_rules": "Unit tests must not open MySQL, Redis, Scylla, ES, or Kafka. Follow existing pytest fixtures.",
+  "repo_url": "https://github.com/Pocket-Fm/radioly_client_api"
+}

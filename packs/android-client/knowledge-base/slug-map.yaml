@@ -1,0 +1,61 @@
+feature_to_product:
+  android-aural-vs-legacy: aural-vs-legacy
+  android-app-shell: app-start-and-shell
+  android-auth-onboarding: auth-and-onboarding
+  android-home-feed-discover: home-feed-discover
+  android-discover: discover
+  android-library: library
+  android-show: show-details
+  android-player: player
+  android-payments-premium: payments-and-premium
+  android-autodebit: autodebit
+  android-ads: ads
+  android-streaks: streaks
+  android-referral: referral
+  android-rewards: rewards
+  android-keytrope: keytrope
+  android-chatbot: chatbot
+  android-share: share
+  android-survey: survey
+  android-app-rating: app-rating
+  android-user-profile: user-profile
+  android-stage: stage
+  android-automotive: automotive
+  android-maintenance: maintenance
+  android-deeplinks: deeplinks
+  android-orchestrator: orchestrator
+  android-appserver-state: appserver-state
+  android-watch: watch
+  android-security: device-security
+product_to_feature:
+  aural-vs-legacy: android-aural-vs-legacy
+  app-start-and-shell: android-app-shell
+  auth-and-onboarding: android-auth-onboarding
+  home-feed-discover: android-home-feed-discover
+  discover: android-discover
+  library: android-library
+  show-details: android-show
+  player: android-player
+  payments-and-premium: android-payments-premium
+  autodebit: android-autodebit
+  ads: android-ads
+  streaks: android-streaks
+  referral: android-referral
+  rewards: android-rewards
+  keytrope: android-keytrope
+  chatbot: android-chatbot
+  share: android-share
+  survey: android-survey
+  app-rating: android-app-rating
+  user-profile: android-user-profile
+  stage: android-stage
+  automotive: android-automotive
+  maintenance: android-maintenance
+  deeplinks: android-deeplinks
+  orchestrator: android-orchestrator
+  appserver-state: android-appserver-state
+  watch: android-watch
+  device-security: android-security
+notes: >
+  New work targets aural/. Legacy app/ is bugfix only unless confirmed.
+  App-shell twins — not every Radioly backend module has an Android twin.

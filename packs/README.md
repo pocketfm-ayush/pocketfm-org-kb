@@ -1,9 +1,22 @@
-# Packs bridge
+# Packs
 
-Groot still loads per-service packs from
-[`Pocket-Fm/content-knowledge-base`](https://github.com/Pocket-Fm/content-knowledge-base).
+Mirrored Groot knowledge packs from `content-knowledge-base` (no Graphify blobs).
 
-This folder does **not** duplicate CONTRACT / features / pfm-kb. It records the
-mapping so Org Brain bootstrap and agents know which pack owns which repo.
+```text
+packs/
+  global/           # catalog, conventions, kb-coverage, skills
+  radioly/          # knowledge-base + pfm-kb + skills
+  search/
+  fabric/
+  …
+  contracts/        # thin CONTRACT.md mirrors
+  manifest.yaml     # repo_id → pack folder
+```
 
-See `manifest.yaml`.
+Refresh from upstream:
+
+```bash
+# from Work/Repo
+rsync -a --exclude graphify --exclude graphify-out \
+  content-knowledge-base/radioly/ pocketfm-org-kb/packs/radioly/
+```

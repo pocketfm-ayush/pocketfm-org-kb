@@ -1,0 +1,98 @@
+version: 1
+id: media-pipeline
+kind: domain
+ontology_id: domain.media-pipeline
+aliases:
+  - apollo
+  - streaming
+  - media-processing
+description: Audio, video, image, subtitle, packaging, licensing, and media-delivery processing before production rollout.
+repositories:
+  - repository: apollo
+  - repository: android_client
+    branch: master
+    modules:
+      - path: aural/security
+      - path: aural/player
+      - path: aural/app/src/main/java/com/radio/pocketfm/app/aural/data/drm
+      - path: aural/app/src/main/java/com/radio/pocketfm/app/aural/data/mapper/PlayableMediaDataMapper.kt
+      - path: aural/app/src/main/java/com/radio/pocketfm/app/aural/data/mapper/PlayerEpisodeMappers.kt
+      - path: aural/app/src/main/java/com/radio/pocketfm/app/aural/data/resolver/PlayerExternalDataResolverImpl.kt
+      - path: aural/feed/data/src/main/java/com/radio/pocketfm/aural/feed/data/FeedDomainMapper.kt
+      - path: aural/feed/data/src/main/java/com/radio/pocketfm/aural/feed/data/FeedWidgetMapperUtils.kt
+      - path: aural/feed/data/src/main/java/com/radio/pocketfm/aural/feed/data/models/ContentValue.kt
+      - path: aural/feed/data/src/main/java/com/radio/pocketfm/aural/feed/data/models/PlayableMedia.kt
+      - path: aural/feed/domain/src/main/java/com/radio/pocketfm/aural/feed/domain/parser/SrtSubtitleParser.kt
+      - path: aural/feed/ui/common/src/main/java/com/radio/pocketfm/aural/feed/ui/screens/common
+      - path: aural/feed/ui/common/src/main/java/com/radio/pocketfm/aural/feed/ui/screens/feedwidgets/biggerThumbnail/composables/BiggerThumbnailVideoView.kt
+      - path: aural/feed/ui/core/src/main/java/com/radio/pocketfm/aural/feed/ui/screens/common
+      - path: aural/feed/ui/core/src/main/java/com/radio/pocketfm/aural/feed/ui/screens/feedwidgets/characterDiscovery/video
+      - path: aural/feed/ui/core/src/main/java/com/radio/pocketfm/aural/feed/ui/screens/feedwidgets/trailer
+      - path: aural/feed/ui/core/src/main/java/com/radio/pocketfm/aural/feed/ui/screens/ugcstories
+      - path: aural/discover/ui/src/main/java/com/radio/pocketfm/aural/discover/ui/composables/VideoView.kt
+      - path: aural/discover/ui/src/main/java/com/radio/pocketfm/aural/discover/ui/screens/DiscoverScreen.kt
+      - path: aural/keytrope/data/src/main/java/com/radio/pocketfm/aural/keytrope/data/mappers/KeyTropeResponseMapper.kt
+      - path: aural/keytrope/data/src/main/java/com/radio/pocketfm/aural/keytrope/data/models/KeyTropeNetworkModels.kt
+      - path: aural/keytrope/ui/src/main/java/com/radio/pocketfm/aural/keytrope/ui/screens/KeyTropeFeedScreen.kt
+      - path: aural/show/ui/src/main/java/com/radio/pocketfm/aural/show/ui/screens/showdetail/components/MediaComponent.kt
+      - path: aural/chatbot/ui/src/main/java/com/radio/pocketfm/aural/chatbot/ui/CharacterIntroScreen.kt
+      - path: aural/onboarding/ui/src/main/java/com/radio/pocketfm/onboarding/ui/screens/filldetail/ui/pages/ScrollableCardsMediaComponents.kt
+      - path: aural/onboarding/ui/src/main/java/com/radio/pocketfm/onboarding/ui/screens/filldetail/ui/pages/TrailersGridScreen.kt
+      - path: aural/referral/ui/src/main/java/com/radio/pocketfm/aural/referral/ui/screens/referral/ReferralScreen.kt
+      - path: aural/rewards/ui/src/main/java/com/radio/pocketfm/aural/rewards/ui/screens/RewardsHowItWorksSection.kt
+      - path: aural/streaks/ui/src/main/java/com/radio/pocketfm/aural/streaks/ui
+      - path: aural/app/src/test/java/com/radio/pocketfm/app/aural/data/drm/MediaUrlDrmLicenseCacheTest.kt
+      - path: aural/app/src/test/java/com/radio/pocketfm/app/aural/data/mapper/PlayableMediaDataMapperTest.kt
+  - repository: ios_client
+    branch: master
+    modules:
+      - path: Pocket FM/Data/Managers/DRM+FairPlay
+      - path: Pocket FM/Data/Managers/PFDownloadHandler.swift
+      - path: Pocket FM/Data/Managers/PFMDownloadHandler.swift
+      - path: Pocket FM/Data/Model/DRM
+      - path: Pocket FM/Data/Model/PFMPlayerInfo.swift
+      - path: Pocket FM/Data/Model/PFStoryModel.swift
+      - path: Pocket FM/Data/Model/ShowStory.swift
+      - path: Pocket FM/Data/PocketDB/Models/Download
+      - path: Pocket FM/Data/Repository/DefaultPFMFetchShowCertificateRepository.swift
+      - path: Pocket FM/Data/Repository/DefaultPFMDownloadRepository.swift
+      - path: Pocket FM/Data/Service/DefaultPFMFetchShowCertificateService.swift
+        apis:
+          - method: GET
+            path: /v2/content_api/show.play_details
+      - path: Pocket FM/Data/Service/DefaultPFMDownloadService.swift
+      - path: Pocket FM/Data/Service/DefaultSubtitleService.swift
+      - path: Pocket FM/Data/UseCase/DefaultPFMFetchShowCertificateUseCase.swift
+      - path: Pocket FM/Domain/RepositoryProtocol/PFMFetchShowCertificateRepository.swift
+      - path: Pocket FM/Domain/RepositoryProtocol/PFMDownloadRepository.swift
+      - path: Pocket FM/Domain/ServiceProtocol/PFMFetchShowCertificateService.swift
+      - path: Pocket FM/Domain/ServiceProtocol/PFMDownloadService.swift
+      - path: Pocket FM/Domain/ServiceProtocol/PFMSubtitleService.swift
+      - path: Pocket FM/Domain/UseCaseProtocol/PFMFetchShowCertificateUseCase.swift
+      - path: Pocket FM/Domain/UseCaseProtocol/PFMDownloadUseCase.swift
+      - path: Pocket FM/Core/Helpers/Downloads
+      - path: Pocket FM/Core/Helpers/MuxHandler/MuxAnalyticsHandler.swift
+      - path: Pocket FM/Core/Managers/VideoDownloadManager.swift
+      - path: Pocket FM/Core/Subtitle
+      - path: Pocket FM/Presentation/Features/PFMPlayerView
+      - path: Pocket FM/CarPlay
+      - path: Pocket FM/App/CarPlaySceneDelegate.swift
+      - path: Pocket FM/Presentation/Features/PFMDiscoverShortsTab
+      - path: Pocket FM/Presentation/Features/PFMHomeView/ViewModel/Crosswalk
+      - path: Pocket FM/Presentation/Features/PFMHomeView/ViewModel/PFMHomeBiggerThumbnailVM.swift
+      - path: Pocket FM/Presentation/Features/PFMInteractiveStories
+      - path: Pocket FM/Presentation/Features/PFMKeyTropes
+      - path: Pocket FM/Presentation/Features/PFMOnboardingView/Onboarding/SwipeableCards
+      - path: Pocket FM/Presentation/Features/PFMOnboardingView/Onboarding/TrailersGrid
+      - path: Pocket FM/Presentation/Features/PFMShowDetail
+      - path: Pocket FM/Presentation/Features/PFMSleepStories
+      - path: Pocket FM/Presentation/Features/PFMStories/PFMUGCStoryPlayerManager
+      - path: Pocket FM/Presentation/Features/PFMStoreView/View/VideoPlayerView.swift
+      - path: Pocket FM/Presentation/Features/PFMRewardedVideo/Reward/Components/RewardsHowItWorksVideoView.swift
+      - path: Pocket FM/Presentation/PFMAICharacterChat/View/PFMAICharacterChatIntroView.swift
+      - path: Pocket FMTests/DRM+FairPlay
+      - path: Pocket FMTests/Database/DownloadRepositoryTests.swift
+      - path: Pocket FMTests/Database/PFMDownloadHandlerTests.swift
+      - path: Pocket FMTests/Player/PFMPlayerInfoTests.swift
+      - path: Pocket FMTests/Player/PFMStoryPlayerManagerHelperTests.swift
+      - path: Pocket FMTests/Player/PFMStoryPlayerManagerPlaybackTests.swift

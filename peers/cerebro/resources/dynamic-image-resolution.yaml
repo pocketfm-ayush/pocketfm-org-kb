@@ -1,0 +1,11 @@
+version: 1
+id: dynamic-image-resolution
+kind: domain
+ontology_id: domain.dynamic-image-resolution
+aliases:
+  - media-forge
+  - image-delivery
+  - dynamic-images
+description: On-demand image retrieval, resizing, format conversion, metadata stripping, fallback, and CDN-origin delivery.
+repositories:
+  - repository: media-forge

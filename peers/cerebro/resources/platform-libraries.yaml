@@ -1,0 +1,33 @@
+version: 1
+id: platform-libraries
+kind: domain
+ontology_id: domain.platform-libraries
+aliases:
+  - go-common
+  - python-common
+  - shared-libraries
+description: Shared Go and Python libraries and wrappers used by Pocket FM services.
+repositories:
+  - repository: go_common
+    modules:
+      - path: config
+      - path: enum
+      - path: errs
+      - path: experiment
+      - path: gin
+      - path: httpclient
+      - path: kafka
+      - path: logger
+      - path: mongo
+      - path: mysql
+      - path: postgres
+      - path: redis
+      - path: scylla
+      - path: temporal
+      - path: validator
+  - repository: python_common
+    modules:
+      - path: logger
+      - path: kafka
+      - path: scylla
+      - path: temporal

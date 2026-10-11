@@ -1,0 +1,119 @@
+version: 1
+id: ugc
+kind: domain
+ontology_id: domain.ugc
+aliases:
+  - user-generated-content
+  - writers
+description: Creator-authored content creation, publishing, analytics, earnings, web experience, event processing, and payouts.
+repositories:
+  - repository: ugc-backend
+  - repository: writers-backend
+    modules:
+      - path: v2
+        apis:
+          - method: POST
+            path: /v2/campaigns/ai_image_generator_webhook
+          - method: GET
+            path: /v2/content_api/book.cbp_book_list
+          - method: POST
+            path: /v2/content_api/book.chapters/verify_chapter/
+          - method: POST
+            path: /v2/content_api/book.cover-image/change
+          - method: POST
+            path: /v2/content_api/book.create_book
+          - method: POST
+            path: /v2/content_api/book.create_or_update_chapter
+          - method: GET
+            path: /v2/content_api/book.creator_ben_prog/
+          - method: GET
+            path: /v2/content_api/book.get_cbp_details
+          - method: GET
+            path: /v2/content_api/book.novel_details
+          - method: GET
+            path: /v2/content_api/book.wbp_daily_incentive/{pk}/
+          - method: POST
+            path: /v2/content_api/comments/comment_action
+          - method: GET
+            path: /v2/content_api/comments/get_comments
+          - method: GET
+            path: /v2/content_api/intro_to_wbp
+          - method: GET
+            path: /v2/content_api/invalidate_book_or_show_cache
+          - method: GET
+            path: /v2/content_api/nudges/by-chapter/
+          - method: POST
+            path: /v2/content_api/nudges/discard/
+          - method: POST
+            path: /v2/content_api/nudges/evaluate-expiry/
+          - method: GET
+            path: /v2/content_api/nudges/summary/
+          - method: POST
+            path: /v2/content_api/show.create
+          - method: POST
+            path: /v2/content_api/ugc/audio/convert_to_audio/
+          - method: GET
+            path: /v2/insights/
+          - method: GET
+            path: /v2/insights/books
+          - method: GET
+            path: /v2/insights/retention
+          - method: GET
+            path: /v2/payments/account_details
+          - method: GET
+            path: /v2/payments/active_contracts
+          - method: GET
+            path: /v2/payments/referral_bonus
+          - method: GET
+            path: /v2/social/share/
+          - method: GET
+            path: /v2/user_api/flutter/config/
+          - method: GET
+            path: /v2/user_api/internal/referrer_details/{uid}/
+          - method: GET
+            path: /v2/user_api/novel_analytics_ugc
+          - method: GET
+            path: /v2/user_api/novel_retention_analytics
+          - method: GET
+            path: /v2/user_api/novel_revenue_share_ugc
+          - method: GET
+            path: /v2/user_api/row_creator/{creator_id}/
+          - method: POST
+            path: /v2/user_api/user.create_creator_account
+          - method: GET
+            path: /v2/user_api/user.get_creator_details
+          - method: POST
+            path: /v2/user_api/user.show_onboarding_screen
+          - method: POST
+            path: /v2/user_api/user.update
+          - method: POST
+            path: /v2/user_api/user_addresses/
+          - method: GET
+            path: /v2/user_api/user_addresses/{pk}/
+          - method: GET
+            path: /v2/user_api/wbp_books_list
+      - path: v3
+        apis:
+          - method: POST
+            path: /v3/content_api/books/disable
+          - method: GET
+            path: /v3/content_api/tasks/
+          - method: POST
+            path: /v3/models/query/
+  - repository: ugc-ui
+  - repository: novels-kafka-stream-clients
+    modules:
+      - path: workers/notifications/trigger_notification_worker_msk.py
+      - path: workers/content_moderation/content_moderation_consumer_ugc.py
+      - path: workers/text_process_worker_ugc.py
+      - path: workers/chapter_verification_worker_msk.py
+      - path: workers/desc_generation_worker.py
+      - path: workers/story_creation/book_propagation_worker_ugc.py
+      - path: workers/cdc/ugc_chapters_worker.py
+      - path: .github/workflows/ugc-kafka-consumers-qa-deploy.yml
+  - repository: ugc-creatives-pipeline
+    modules:
+      - path: python-pipeline/temporal/promotions
+      - path: .github/workflows/build-deploy-temporal-worker.yaml
+  - repository: prod-novels-cron-airflow
+  - repository: writers-payout-airflow

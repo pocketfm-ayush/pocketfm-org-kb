@@ -1,0 +1,23 @@
+version: 1
+id: impressions
+kind: domain
+ontology_id: domain.impressions
+aliases:
+  - impression
+  - impression-service
+description: User and device impression ingestion, aggregation, querying, and retention.
+repositories:
+  - repository: impression
+    modules:
+      - path: server
+        platform: server
+        resource_kind: backend
+        languages: [Go]
+      - path: clientgo
+        platform: shared
+        resource_kind: shared_library
+        languages: [Go]
+      - path: clientpy
+        platform: shared
+        resource_kind: shared_library
+        languages: [Python]

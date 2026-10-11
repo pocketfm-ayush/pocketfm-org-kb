@@ -1,0 +1,191 @@
+version: 1
+id: pricing
+kind: domain
+ontology_id: domain.pricing
+aliases:
+  - monetization
+description: Pricing, purchase plans, store offers, payment history, wallet operations, loyalty rewards, and payment processing.
+repositories:
+  - repository: radioly_client_api
+    ownership:
+      type: owned_by
+      target: team.monet-leads
+      source_owner: Pocket-Fm/monet-leads
+      confidence: 1.0
+      evidence:
+        - repository: radioly_client_api
+          path: CODEOWNERS
+          lines: 11-14
+          method: static_analysis
+          confidence: 1.0
+    modules:
+      - path: v2/payments
+      - path: v2/experiments/payments
+      - path: v2/tests/payments
+      - path: v3/payments
+      - path: v3/pricing
+      - path: v2/my_store
+        apis:
+          - method: GET
+            path: /v2/store/module_order
+          - method: GET
+            path: /v2/store/promotions
+          - method: GET
+            path: /v2/store/data
+      - path: v2/content_api
+        apis:
+          - method: POST
+            path: /v2/content_api/show.deduct
+          - method: POST
+            path: /v2/content_api/auto_debit.update_flag_status
+          - method: GET
+            path: /v2/content_api/auto_debit.get_warning_bottom_sheet
+      - path: v2/user_api
+        apis:
+          - method: GET
+            path: /v2/payment/get_benefits
+          - method: GET
+            path: /v2/user_api/user.get_all_referrals
+      - path: v2/wallet
+        apis:
+          - method: GET
+            path: /v2/wallet/coins/purchase
+          - method: GET
+            path: /v2/wallet/coins/threshold
+          - method: GET
+            path: /v2/wallet/coins/usage_by_txn_id
+          - method: POST
+            path: /v2/wallet/internal/coins/credit
+      - path: v2/campaigns/generic_services
+        apis:
+          - method: POST
+            path: /v2/campaign/partnership
+      - path: v3/history
+        apis:
+          - method: GET
+            path: /v3/history/config
+          - method: GET
+            path: /v3/history/coins
+          - method: GET
+            path: /v3/history/purchases
+          - method: GET
+            path: /v3/history/transaction/{order_id}/
+          - method: POST
+            path: /v3/history/transaction/{order_id}/refresh
+      - path: v3/gamification
+        apis:
+          - method: GET
+            path: /v3/gamification/slot_machine/eligibility
+          - method: POST
+            path: /v3/gamification/slot_machine/spin
+          - method: GET
+            path: /v3/gamification/rewards
+          - method: POST
+            path: /v3/gamification/rewards
+          - method: GET
+            path: /v3/loyalty_v3/rewards_club
+          - method: GET
+            path: /v3/loyalty_v3/get_webview_details
+  - repository: android_client
+    branch: master
+    modules:
+      - path: aural/payment
+      - path: aural/autodebit
+      - path: aural/orchestrator
+  - repository: ios_client
+    branch: master
+    modules:
+      - path: Pocket FM/Data/Managers/Purchase
+      - path: Pocket FM/Data/Model/MyStore
+      - path: Pocket FM/Data/Model/Purchase
+      - path: Pocket FM/Data/Model/History
+      - path: Pocket FM/Data/Model/Loyalty
+      - path: Pocket FM/Data/Repository/MyStore
+      - path: Pocket FM/Data/Repository/Purchase
+      - path: Pocket FM/Data/Repository/Loyalty
+      - path: Pocket FM/Data/Service/MyStore
+      - path: Pocket FM/Data/Service/Purchase
+      - path: Pocket FM/Data/Service/History
+      - path: Pocket FM/Data/Service/Loyalty
+      - path: Pocket FM/Data/UseCase/MyStore
+      - path: Pocket FM/Data/UseCase/Purchase
+      - path: Pocket FM/Data/UseCase/History
+      - path: Pocket FM/Data/UseCase/Loyalty
+      - path: Pocket FM/Domain/Entities/Store
+      - path: Pocket FM/Domain/RepositoryProtocol/MyStore
+      - path: Pocket FM/Domain/RepositoryProtocol/Purchase
+      - path: Pocket FM/Domain/RepositoryProtocol/Loyalty
+      - path: Pocket FM/Domain/ServiceProtocol/MyStore
+      - path: Pocket FM/Domain/ServiceProtocol/Purchase
+      - path: Pocket FM/Domain/ServiceProtocol/Loyalty
+      - path: Pocket FM/Domain/UseCaseProtocol/MyStore
+      - path: Pocket FM/Domain/UseCaseProtocol/Purchase
+      - path: Pocket FM/Domain/UseCaseProtocol/History
+      - path: Pocket FM/Domain/UseCaseProtocol/Loyalty
+      - path: Pocket FM/Presentation/Features/AutoDebit
+      - path: Pocket FM/Presentation/Features/PFMHistory
+      - path: Pocket FM/Presentation/Features/PFMPremiumSubscription
+      - path: Pocket FM/Presentation/Features/PFMStoreView
+      - path: Pocket FM/Presentation/Features/Purchase
+      - path: Pocket FM/Presentation/Features/Loyalty
+      - path: Pocket FM/Data/Networking/ApiUrls.swift
+        apis:
+          - method: GET
+            path: /v2/payment/user_generic_usage_history
+          - method: GET
+            path: /v2/payment/subscription.history
+          - method: GET
+            path: /v2/payment/get_order_details
+          - method: GET
+            path: /v2/store/module_order
+          - method: GET
+            path: /v2/store/promotions
+          - method: POST
+            path: /v2/content_api/show.deduct
+          - method: POST
+            path: /v2/content_api/auto_debit.update_flag_status
+          - method: GET
+            path: /v2/content_api/auto_debit.get_warning_bottom_sheet
+          - method: GET
+            path: /v2/user_api/user.get_all_referrals
+          - method: GET
+            path: /v2/wallet/coins/purchase
+          - method: GET
+            path: /v2/wallet/coins/threshold
+          - method: GET
+            path: /v2/wallet/coins/usage_by_txn_id
+          - method: GET
+            path: /v3/history/coins
+          - method: GET
+            path: /v3/loyalty_v3/rewards_club
+  - repository: kafka-stream-clients
+    branch: master
+    modules:
+      - path: workers/payments
+      - path: workers/subscription_offer_engine
+      - path: workers/subscription_refund_handler
+      - path: workers/subscription_validation
+  - repository: airflow
+    branch: main
+    ownership:
+      type: owned_by
+      target: team.monetization
+      source_owner: Pocket-Fm/monetization
+      confidence: 1.0
+      evidence:
+        - repository: airflow
+          path: CODEOWNERS
+          lines: 3
+          method: static_analysis
+          confidence: 1.0
+        - repository: airflow
+          path: CODEOWNERS
+          lines: 5
+          method: static_analysis
+          confidence: 1.0
+    modules:
+      - path: payments
+      - path: loyalty_tier_program
+      - path: temporal/payments
+      - path: temporal/scripts/sync_schedules.py
+      - path: .github/workflows/temporal-sync-schedules.yml

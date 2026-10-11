@@ -1,0 +1,49 @@
+{
+  "name": "litefm-backend",
+  "language": "python",
+  "framework": "django",
+  "pack_path": "litefm-backend",
+  "graph_path": "litefm-backend/graphify/graphify-out/graph.json",
+  "knowledge_base_path": "litefm-backend/knowledge-base",
+  "default_base": "main",
+  "test_command": "make test",
+  "check_command": "make ruff",
+  "max_repair_iterations": 3,
+  "allowed_edit_paths": [
+    "v2/**",
+    "v3/**",
+    "content_api/**",
+    "feed_api/**",
+    "user_api/**",
+    "radioly_api/**",
+    "workers/**",
+    "tests/**"
+  ],
+  "protected_paths": [
+    "knowledge-base/**",
+    "graphify/**",
+    ".env",
+    "**/*.env",
+    "authorization_json",
+    "infra/**",
+    "docker_dev/**"
+  ],
+  "source_files_priority": [
+    "v3/",
+    "v2/",
+    "feed_api/",
+    "content_api/",
+    "user_api/",
+    "manage.py"
+  ],
+  "test_paths": [
+    "tests/**",
+    "**/tests/**",
+    "**/test_*.py"
+  ],
+  "external_systems": [
+    "mysql",
+    "redis"
+  ],
+  "repo_url": "https://github.com/Pocket-Fm/litefm-backend"
+}

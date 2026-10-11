@@ -1,0 +1,31 @@
+# Feature slug ↔ product module (Radioly)
+feature_to_product:
+  default-feed-cache: default-feed-freshness
+  show-details-unlock: show-details-and-unlock
+  launch-config: launch-config
+  nexus-user-profile: nexus-user-profile
+  iam-identity: iam-identity
+  experiments-allocation: experiments-allocation
+  notification-inbox: notification-inbox
+  budget-booster: budget-booster
+  gtm-impressions: gtm-impressions
+  unlocking-byline: unlocking-byline
+  liveops-tentpole: liveops-tentpole
+  ugc-backend-writer: ugc-backend-writer
+  purchase-comms: purchase-comms
+product_to_feature:
+  default-feed-freshness: default-feed-cache
+  show-details-and-unlock: show-details-unlock
+  launch-config: launch-config
+  nexus-user-profile: nexus-user-profile
+  iam-identity: iam-identity
+  experiments-allocation: experiments-allocation
+  notification-inbox: notification-inbox
+  budget-booster: budget-booster
+  gtm-impressions: gtm-impressions
+  unlocking-byline: unlocking-byline
+  liveops-tentpole: liveops-tentpole
+  ugc-backend-writer: ugc-backend-writer
+  purchase-comms: purchase-comms
+notes: Feature folder names stay code-stable. Product module filenames may differ.
+  Groot resolves both directions via this file.

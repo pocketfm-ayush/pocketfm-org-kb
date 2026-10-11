@@ -1,0 +1,496 @@
+# Groot pack router. Chat may infer a pack from this file.
+# Implementation / draft PRs still confirm the pack before any write.
+#
+# Skills merge: global/skills/** then overlay <pack>/skills/** (by filename stem).
+# Facts never merge: CONTRACT, features, graph, allowed_edit_paths stay per pack.
+
+packs:
+  search:
+    repo_id: pocket_search
+    github: https://github.com/Pocket-Fm/pocket_search
+    default_base: main
+    graph: search/graphify/graphify-out/graph.json
+    contract: search/knowledge-base/CONTRACT.md
+    onboarded: true
+    keywords:
+      - search
+      - autosuggest
+      - elasticsearch
+      - opensearch
+      - placeholder
+      - no-results
+      - universal search
+      - query length
+      - query processing
+      - show filter
+      - language biased
+  radioly:
+    repo_id: radioly_client_api
+    github: https://github.com/Pocket-Fm/radioly_client_api
+    default_base: main
+    graph: radioly/graphify/graphify-out/graph.json
+    contract: radioly/knowledge-base/CONTRACT.md
+    onboarded: true
+    keywords:
+      - radioly
+      - radio
+      - home feed
+      - listen
+      - fm backend
+      - coins
+      - wallet
+      - unlock
+      - paywall
+      - discover
+      - ads
+      - library
+      - nexus
+      - iam
+      - launch config
+      - budget booster
+  fabric:
+    repo_id: fabric
+    github: https://github.com/Pocket-Fm/fabric
+    default_base: main
+    graph: fabric/graphify/graphify-out/graph.json
+    contract: fabric/knowledge-base/CONTRACT.md
+    onboarded: true
+    keywords:
+      - fabric
+      - impression
+      - playtime
+      - feed show exclusion
+      - ai pgc sync
+      - temporal namespaces
+      - impression
+      - playtime
+      - temporal namespace
+  go-radioly-service:
+    repo_id: go-radioly-service
+    github: https://github.com/Pocket-Fm/go-radioly-service
+    default_base: main
+    graph: go-radioly-service/graphify/graphify-out/graph.json
+    contract: go-radioly-service/knowledge-base/CONTRACT.md
+    onboarded: true
+    keywords:
+      - relay
+      - event ingestion
+      - clickstream
+      - appsflyer
+      - tiktok
+      - firebase
+      - moengage export
+      - meta
+      - facebook
+      - event router
+      - user attribution
+      - gtm event rewrite
+  content-backend:
+    repo_id: content-backend
+    github: https://github.com/Pocket-Fm/content-backend
+    default_base: main
+    graph: content-backend/graphify/graphify-out/graph.json
+    contract: content-backend/knowledge-base/CONTRACT.md
+    onboarded: true
+    keywords:
+      - content-backend
+      - shows
+      - catalog
+      - scylla
+      - continue playing
+      - fastpass
+      - default home
+      - audiobook feed
+      - appsflyer gcd
+  litefm-backend:
+    repo_id: litefm-backend
+    github: https://github.com/Pocket-Fm/litefm-backend
+    default_base: main
+    graph: litefm-backend/graphify/graphify-out/graph.json
+    contract: litefm-backend/knowledge-base/CONTRACT.md
+    onboarded: true
+    keywords:
+      - litefm
+      - litefm-backend
+      - lite-fm
+      - lite fm
+  airflow:
+    repo_id: airflow
+    github: https://github.com/Pocket-Fm/airflow
+    default_base: main
+    graph: airflow/graphify/graphify-out/graph.json
+    contract: airflow/knowledge-base/CONTRACT.md
+    onboarded: true
+    keywords:
+      - airflow
+      - dag
+      - scheduler
+      - airflow temporal
+      - payment recon
+      - moengage crm
+      - ppv validation
+      - offerwall reward ops
+      - social notifications
+      - meta audience
+      - offline experiments
+  kafka-stream-clients:
+    repo_id: kafka-stream-clients
+    github: https://github.com/Pocket-Fm/kafka-stream-clients
+    default_base: master
+    graph: kafka-stream-clients/graphify/graphify-out/graph.json
+    contract: kafka-stream-clients/knowledge-base/CONTRACT.md
+    onboarded: true
+    keywords:
+      - kafka
+      - consumer
+      - workers
+      - playtime worker
+      - s2s
+      - offerwall worker
+      - wallet recon worker
+      - moengage worker
+      - battle pass
+  ios-client:
+    repo_id: ios_client
+    github: https://github.com/Pocket-Fm/ios_client
+    default_base: master
+    graph: ios-client/graphify/graphify-out/graph.json
+    contract: ios-client/knowledge-base/CONTRACT.md
+    onboarded: true
+    keywords:
+      - ios
+      - swift
+      - pocket fm app
+      - carplay
+      - ios streaks
+      - storekit
+      - ugc
+  android-client:
+    repo_id: android_client
+    github: https://github.com/Pocket-Fm/android_client
+    default_base: master
+    graph: android-client/graphify/graphify-out/graph.json
+    contract: android-client/knowledge-base/CONTRACT.md
+    onboarded: true
+    keywords:
+      - android
+      - aural
+      - kotlin
+      - android player
+      - android onboarding
+      - android offerwall
+      - android streaks
+      - android auto
+
+# Feature slug → pack. Used when the PRD names a capability instead of a repo.
+features:
+  ai-pgc-replacement: search
+  campaign-only-shows: search
+  disabled-show-removal: search
+  ds-thumbnails: search
+  genre-trope-discovery: search
+  language-biased-search: search
+  me-show-exclusion: search
+  override-show-filter: search
+  query-processing: search
+  response-caching: search
+  show-filter: search
+  universal-search: search
+  account-deactivate: radioly
+  account-delete: radioly
+  account-recovery: radioly
+  account-transfer: radioly
+  ai-pgc-show-selection: radioly
+  airtel-premium: radioly
+  alexa: radioly
+  app-open-ads: radioly
+  app-rating-popup: radioly
+  author-gift: radioly
+  auto-debit: radioly
+  autoplay-playlist: radioly
+  banner-ads: radioly
+  banners: radioly
+  bigger-thumbnails: radioly
+  campaign-deeplinks: radioly
+  car-mode: radioly
+  cashback: radioly
+  character-cards: radioly
+  character-chat: radioly
+  checkout: radioly
+  coin-subscriptions: radioly
+  coins-wallet: radioly
+  comments-and-reviews: radioly
+  community-updates: radioly
+  cross-show-stitch: radioly
+  daily-checkin: radioly
+  default-feed-cache: radioly
+  device-cover-art: radioly
+  device-login-limit: radioly
+  discover-tab: radioly
+  downloads: radioly
+  email-password-reset: radioly
+  episode-recap: radioly
+  gamified-rewards: radioly
+  giveaway: radioly
+  help-faq: radioly
+  home-feed: radioly
+  in-player-ads: radioly
+  interactive-story: radioly
+  key-tropes: radioly
+  launch-overlays: radioly
+  library: radioly
+  listener-profile: radioly
+  listening-progress: radioly
+  loyalty: radioly
+  multi-profile: radioly
+  my-store: radioly
+  new-user-coin-grant: radioly
+  no-ad-pack: radioly
+  not-interested: radioly
+  notification-permission: radioly
+  offerwall: radioly
+  onboarding-first-run: radioly
+  onboarding-show-pick: radioly
+  otp-login: radioly
+  partner-install-coins: radioly
+  payment-history: radioly
+  paywall: radioly
+  player-chrome: radioly
+  player-feed: radioly
+  playtime-credits: radioly
+  pocket-pick: radioly
+  ppv: radioly
+  pricing: radioly
+  rewarded-ads: radioly
+  rewards: radioly
+  show-ai-recap: radioly
+  show-details-unlock: radioly
+  show-referral: radioly
+  show-thumbnail-mapping: radioly
+  sleep-mode: radioly
+  slot-machine: radioly
+  sponsored-ads: radioly
+  stage: radioly
+  story-evolution: radioly
+  streaks: radioly
+  subscriptions: radioly
+  support-csat: radioly
+  support-ticket: radioly
+  terms: radioly
+  topic-browse: radioly
+  trailer-code: radioly
+  tv-cast: radioly
+  user-show-history: radioly
+  user-survey: radioly
+  visibility-filters: radioly
+  writer-notes: radioly
+  writer-profile: radioly
+  default-feed-freshness: radioly  # product slug → pack (feature: default-feed-cache)
+  show-details-and-unlock: radioly  # product slug → pack (feature: show-details-unlock)
+  launch-config: radioly
+  nexus-user-profile: radioly
+  iam-identity: radioly
+  experiments-allocation: radioly
+  notification-inbox: radioly
+  budget-booster: radioly
+  gtm-impressions: radioly
+  unlocking-byline: radioly
+  liveops-tentpole: radioly
+  ugc-backend-writer: radioly
+  purchase-comms: radioly
+  impression-tracking: fabric
+  playtime-tracking: fabric
+  feed-show-exclusion: fabric
+  ai-pgc-playtime-sync: fabric
+  impression-ingest-consumer: fabric
+  gtm-impression-whitelist: fabric
+  ads-impression-ingest: fabric
+  impression-client-go: fabric
+  impression-client-py: fabric
+  audio-playtime-ingest: fabric
+  playtime-content-client: fabric
+  temporal-namespaces: fabric
+  event-relay: go-radioly-service
+  event-ingest: go-radioly-service
+  tenant-routing: go-radioly-service
+  platform-export: go-radioly-service
+  delivery-resilience: go-radioly-service
+  allowlist-event-config: go-radioly-service
+  export-tiktok: go-radioly-service
+  export-firebase: go-radioly-service
+  export-appsflyer: go-radioly-service
+  export-meta: go-radioly-service
+  export-moengage: go-radioly-service
+  user-attribution: go-radioly-service
+  gtm-impression-routing: go-radioly-service
+  listening-level-s2s: go-radioly-service
+  limited-experience-signals: go-radioly-service
+  event-enrichment: go-radioly-service
+  backend-direct-path: go-radioly-service
+  stream-analytics: go-radioly-service
+  alexa-event-ingest: go-radioly-service
+  event-config-admin: go-radioly-service
+  multi-tenant-apps: go-radioly-service
+  content-catalog: content-backend
+  show-catalog-read: content-backend
+  story-catalog-read: content-backend
+  show-details-fallback: content-backend
+  home-continue-playing-slices: content-backend
+  attribution-deeplink-storage: content-backend
+  default-home-feed: content-backend
+  audiobook-feed: content-backend
+  catalog-cache: content-backend
+  fastpass-story-release: content-backend
+  branching-stories: content-backend
+  stitching-ux: content-backend
+  paid-flag-normalization: content-backend
+  platform-geo-restriction: content-backend
+  show-image-variants: content-backend
+  english-description: content-backend
+  private-catalog-api: content-backend
+  show-meta-experiment: content-backend
+  android-design-revamp: content-backend
+  airflow-dags: airflow
+  account-lifecycle: airflow
+  ads-mediation-waterfall: airflow
+  appsflyer-audience-export: airflow
+  auto-genre-tags: airflow
+  bigger-thumbnails-jobs: airflow
+  catalog-sync-jobs: airflow
+  churn-reactivation-coins: airflow
+  coin-balance-ops: airflow
+  content-throttling-jobs: airflow
+  daily-show-rotation: airflow
+  device-experiment-ttl: airflow
+  discover-tab-jobs: airflow
+  experience-scheduled-jobs: airflow
+  gateway-recon: airflow
+  genai-tts-jobs: airflow
+  key-tropes-jobs: airflow
+  loyalty-tier-jobs: airflow
+  moengage-crm-sync: airflow
+  novels-analytics-jobs: airflow
+  offerwall-reward-ops: airflow
+  pocket-tv-payments: airflow
+  ppv-ldau-propagation: airflow
+  ppv-validation-pipeline: airflow
+  reengage-rewards-redis: airflow
+  s2s-attribution-jobs: airflow
+  experiment-health-jobs: airflow
+  unlock-tokenizer-ops: airflow
+  s2s-mismatch-validation: airflow
+  show-catalog-ops: airflow
+  facebook-campaign-insights: airflow
+  meta-audience-sync: airflow
+  offline-experiment-allocations: airflow
+  social-ugc-notifications: airflow
+  search-index-jobs: airflow
+  sendgrid-unsubscribe-sync: airflow
+  show-referral-rewards-jobs: airflow
+  stories-metadata-sync: airflow
+  streaks-push: airflow
+  temporal-ads-worker: airflow
+  temporal-content-worker: airflow
+  temporal-experience-worker: airflow
+  temporal-genai-worker: airflow
+  temporal-payments-worker: airflow
+  temporal-platforms-worker: airflow
+  tts-audio-pipelines: airflow
+  user-show-unlock-sync: airflow
+  vip-binge-super-saver: airflow
+  content-scheduled-jobs: airflow
+  ads-scheduled-jobs: airflow
+  payments-scheduled-jobs: airflow
+  temporal-domain-workers: airflow
+  kafka-workers: kafka-stream-clients
+  listening-playtime: kafka-stream-clients
+  show-unlocks-and-battle-pass: kafka-stream-clients
+  wallet-coins-and-recon: kafka-stream-clients
+  ads-playtime-streaks-and-offerwall: kafka-stream-clients
+  s2s-attribution-and-moengage: kafka-stream-clients
+  experience-reengage-and-discover: kafka-stream-clients
+  feeds-packaged-deployment: kafka-stream-clients
+  account-actions-and-deactivation: kafka-stream-clients
+  comms-whatsapp-email-push: kafka-stream-clients
+  video-impressions: kafka-stream-clients
+  subscription-lifecycle: kafka-stream-clients
+  referral-rewards: kafka-stream-clients
+  budget-booster-worker: kafka-stream-clients  # worker twin; product BBD stays budget-booster → radioly
+  content-throttling-rewards: kafka-stream-clients
+  continue-playing-cleanup: kafka-stream-clients
+  reactivation-dumps: kafka-stream-clients
+  autoplay-dumps: kafka-stream-clients
+  auto-debit-reset: kafka-stream-clients
+  be-events: kafka-stream-clients
+  character-sheets: kafka-stream-clients
+  content-moderation-ranking: kafka-stream-clients
+  machine-translation: kafka-stream-clients
+  mini-series-launch: kafka-stream-clients
+  user-default-tab: kafka-stream-clients
+  loyalty-moengage-tags: kafka-stream-clients
+  entity-stats: kafka-stream-clients
+  feedback-popup: kafka-stream-clients
+  appsflyer-device-campaign: kafka-stream-clients
+  ios-app-shell: ios-client
+  ios-home-discovery: ios-client
+  ios-library: ios-client
+  ios-player: ios-client
+  ios-auth-onboarding: ios-client
+  ios-payments-premium: ios-client
+  ios-search: ios-client
+  ios-show-detail: ios-client
+  ios-downloads: ios-client
+  ios-audiobook: ios-client
+  ios-coin-store: ios-client
+  ios-purchase-unlock: ios-client
+  ios-premium-manage: ios-client
+  ios-autodebit: ios-client
+  ios-streaks: ios-client
+  ios-loyalty: ios-client
+  ios-rewards-ads: ios-client
+  ios-keytropes: ios-client
+  ios-user-profile: ios-client
+  ios-comments-reviews: ios-client
+  ios-author: ios-client
+  ios-ugc: ios-client
+  ios-space: ios-client
+  ios-sleep-stories: ios-client
+  ios-interactive-stories: ios-client
+  ios-discover-shorts: ios-client
+  ios-survey-csat: ios-client
+  ios-app-rating: ios-client
+  ios-gdpr: ios-client
+  ios-carplay: ios-client
+  ios-notifications: ios-client
+  ios-webview: ios-client
+  ios-deeplinks: ios-client
+  ios-admin-controls: ios-client
+  ios-ai-character-chat: ios-client
+  android-app-shell: android-client
+  android-home-feed-discover: android-client
+  android-library: android-client
+  android-player: android-client
+  android-auth-onboarding: android-client
+  android-payments-premium: android-client
+  android-aural-vs-legacy: android-client
+  android-show: android-client
+  android-discover: android-client
+  android-ads: android-client
+  android-streaks: android-client
+  android-referral: android-client
+  android-rewards: android-client
+  android-keytrope: android-client
+  android-chatbot: android-client
+  android-share: android-client
+  android-survey: android-client
+  android-app-rating: android-client
+  android-autodebit: android-client
+  android-automotive: android-client
+  android-maintenance: android-client
+  android-deeplinks: android-client
+  android-orchestrator: android-client
+  android-appserver-state: android-client
+  android-user-profile: android-client
+  android-stage: android-client
+  android-watch: android-client
+  android-security: android-client

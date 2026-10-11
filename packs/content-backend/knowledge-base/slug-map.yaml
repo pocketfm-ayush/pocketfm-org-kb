@@ -1,0 +1,43 @@
+feature_to_product:
+  content-catalog: content-catalog
+  show-catalog-read: show-catalog-read
+  story-catalog-read: story-catalog-read
+  show-details-fallback: show-details-fallback
+  home-continue-playing-slices: home-continue-playing-slices
+  attribution-deeplink-storage: attribution-deeplink-storage
+  default-home-feed: default-home-feed
+  audiobook-feed: audiobook-feed
+  catalog-cache: catalog-cache
+  fastpass-story-release: fastpass-story-release
+  branching-stories: branching-stories
+  stitching-ux: stitching-ux
+  paid-flag-normalization: paid-flag-normalization
+  platform-geo-restriction: platform-geo-restriction
+  show-image-variants: show-image-variants
+  english-description: english-description
+  private-catalog-api: private-catalog-api
+  show-meta-experiment: show-meta-experiment
+  android-design-revamp: android-design-revamp
+product_to_feature:
+  content-catalog: content-catalog
+  show-catalog-read: show-catalog-read
+  story-catalog-read: story-catalog-read
+  show-details-fallback: show-details-fallback
+  home-continue-playing-slices: home-continue-playing-slices
+  attribution-deeplink-storage: attribution-deeplink-storage
+  default-home-feed: default-home-feed
+  audiobook-feed: audiobook-feed
+  catalog-cache: catalog-cache
+  fastpass-story-release: fastpass-story-release
+  branching-stories: branching-stories
+  stitching-ux: stitching-ux
+  paid-flag-normalization: paid-flag-normalization
+  platform-geo-restriction: platform-geo-restriction
+  show-image-variants: show-image-variants
+  english-description: english-description
+  private-catalog-api: private-catalog-api
+  show-meta-experiment: show-meta-experiment
+  android-design-revamp: android-design-revamp
+notes: >
+  Radioly remains the consumer BFF for most app journeys; content-backend is the
+  emerging catalog read service. Domain feature twins reshape catalog responses.

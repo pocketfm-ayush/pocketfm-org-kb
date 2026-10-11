@@ -1,0 +1,98 @@
+version: 1
+id: ads
+kind: domain
+ontology_id: domain.ads
+aliases:
+  - advertising
+  - ad-monetization
+description: Ad configuration, eligibility, serving, acknowledgement, rewards, and ad-funded incentives.
+repositories:
+  - repository: radioly_client_api
+    ownership:
+      type: owned_by
+      target: team.ads-backend-lead
+      source_owner: Pocket-Fm/ads-backend-lead
+      confidence: 1.0
+      evidence:
+        - repository: radioly_client_api
+          path: CODEOWNERS
+          method: static_analysis
+          confidence: 1.0
+    modules:
+      - path: v2/campaigns/incent_campaign
+      - path: v3/ads
+      - path: v2/content_api/ads
+  - repository: android_client
+    branch: master
+    modules:
+      - path: aural/fm-ads-client
+        apis:
+          - method: GET
+            path: /v2/content_api/ads.ads_config
+          - method: GET
+            path: /v3/ads/rewarded_ads/reward_offers
+          - method: GET
+            path: /v3/ads/rewarded_ads/acknowledge_reward
+          - method: GET
+            path: /v2/incent_campaign/campaign/acknowledge_reward
+          - method: GET
+            path: /v3/ads/banner_ads/get_banner_config
+          - method: POST
+            path: /v3/ads/ads.get_image_ad
+          - method: POST
+            path: /v2/content_api/ads.get_eligible_ad
+          - method: POST
+            path: /v3/ads/ads_acknowledgement
+  - repository: ios_client
+    branch: master
+    modules:
+      - path: Pocket FM/Core/Helpers/Ads
+      - path: Pocket FM/Core/Managers/Ads
+      - path: Pocket FM/Data/Managers/Ad
+      - path: Pocket FM/Data/Model/Ads
+      - path: Pocket FM/Data/Service/DefaultPlayerAdService.swift
+        apis:
+          - method: POST
+            path: /v2/content_api/ads.get_eligible_ad
+          - method: POST
+            path: /v3/ads/ads.get_image_ad
+          - method: GET
+            path: /v2/content_api/ads.ads_config
+          - method: POST
+            path: /v3/ads/ads_acknowledgement
+      - path: Pocket FM/Data/Service/DefaultRewardedVideoService.swift
+        apis:
+          - method: POST
+            path: /v2/incent_campaign/campaign/get_rewarded_video
+          - method: GET
+            path: /v3/ads/ads.get_rewards_info
+      - path: Pocket FM/Presentation/Features/PFMPlayerView/Components/Advertisement
+      - path: Pocket FM/Presentation/Features/PFMRewardedVideo
+      - path: Pocket FMTests/Ads
+      - path: Pocket FMTests/Player/Advertisement
+  - repository: airflow
+    branch: main
+    ownership:
+      type: owned_by
+      target: team.ads-backend
+      source_owner: Pocket-Fm/ads-backend
+      confidence: 1.0
+      evidence:
+        - repository: airflow
+          path: CODEOWNERS
+          lines: 1
+          method: static_analysis
+          confidence: 1.0
+    modules:
+      - path: temporal/ads
+        platform: server
+        resource_kind: backend
+        languages: [Python]
+      - path: temporal/scripts/sync_schedules.py
+        platform: server
+        resource_kind: backend
+        languages: [Python]
+      - path: .github/workflows/temporal-sync-schedules.yml
+        platform: shared
+        resource_kind: infra
+        languages: [YAML]

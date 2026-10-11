@@ -1,0 +1,15 @@
+---
+id: capability.radioly-ads-variants
+type: capability
+repository: radioly_client_api
+status: established
+evidence:
+  - radioly_client_api@95b5fafadad467aab75452e6d253cbface1f46c2:v3/ads/experiments/aditude_banner/experiment.py#AditudeBannerExperiment
+  - radioly_client_api@95b5fafadad467aab75452e6d253cbface1f46c2:v3/ads/experiments/aditude_banner_android/experiment.py#AditudeBannerAndroidExperiment
+---
+
+**Aliases:** ads variants
+
+**When to use:** Locate a variant class in this package. Not the live allocation table and not percentages. Class names: AditudeBannerExperiment, AditudeBannerAndroidExperiment, AditudeIntegrationExperiment, AditudeIntegrationAndroidExperiment, AdjoeSaleExp, AdswizzIntegrationExperiment, AniViewAdSelector, AniViewInstreamAdsExp, AppLaunchAdExperiment, PlatformType, AppOpenAdExperiment, ApplovinMaxForRvAndroidExperiment, ApplovinMaxForRvAndroidExperimentV2, ApplovinMaxForRvIosExperiment, ApplovinMaxForRvIosCohortSpecificExperiment, ApplovinMaxUkAndroidExperiment, BannerAdsReArchExp, ApplovinMaxForBannerAndroidInExperiment, ApplovinMaxForBannerAndroidRowExperiment, BannerCacheConfigExperiment, BannerCacheConfigINExp, BannerIndiaFallbackExp, BannerRefreshRateChangesAndroidExperiment, BannerRefreshRatePersonalisationExperiment, BannerRefreshRatePersonalisationAndroidExperiment, CRVLimitReductionExp, CRVLimitReductionService, CrvPackSizeReductionExp, CRVPersonalisationExp, CRVPersonalisationService, DynamicBiddingCohort, DynamicBiddingIosExperiment, EnableInstreamAdsInDeAndUkExperiment, FSNAllowedScreen, FSNFallbackForInstreamExp, FSNUserContextDTO, _slot, _instream_slot, FSNEpisodeBoundaryService, FullScreenNativeAdsExp, GDPRConcentEnableAdsExperiment, GDPRConcentEnableAdsExperimentV2, GDPRSourcepointHomepageNudgeExperiment, GDPRSourcepointIntegrationExperiment, GDPRSourcepointIntegrationGermanExperiment, HigherIntAdsIndiaExp, ImageAdGoBackendProxyExperiment, ImproveAdAdoptionExperiment, _rewrite_cta_url, IncreaseRvFrequencyBottomSliderService, IncreaseRvFrequencyExperiment, IncreaseRvFrequencyNotificationService, IndiaBannerExperiment, IndiaRvAdsCachingExperiment, InmobiUaType, InmobiCohort, InmobiPublisherSignalsExperiment, InmobiCustomParamsService, InstreamAdsNonUsInExperiment, InstreamFirstEpOfDayExpConfig. Plus 102 more classes in the same package.
+
+**Required inputs:** the class name or the listener surface. Cohort rules stay on capability.radioly-experiment-allocation.

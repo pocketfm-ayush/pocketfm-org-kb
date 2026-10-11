@@ -1,98 +1,142 @@
-# Target repos for handbook distill.
-# status: pending until validated entities exist under repositories/<id>/.
+# Target repos for org-kb distill. status: pending until validated entities exist.
 version: 1
 repos:
   radioly_client_api:
     github: Pocket-Fm/radioly_client_api
     wave: P0
-    status: pending
-    groot_pack: radioly
-    notes: Migrate entities from content-knowledge-base/org-handbook
+    status: ready
   iam:
     github: Pocket-Fm/iam
     wave: P0
-    status: pending
-    groot_pack: null
+    status: ready
   nexus:
     github: Pocket-Fm/nexus
     wave: P0
-    status: pending
-    groot_pack: null
+    status: ready
   android_client:
     github: Pocket-Fm/android_client
     wave: P0
-    status: pending
-    groot_pack: android-client
+    status: ready
   ios_client:
     github: Pocket-Fm/ios_client
     wave: P0
-    status: pending
-    groot_pack: ios-client
+    status: ready
   kafka-stream-clients:
     github: Pocket-Fm/kafka-stream-clients
     wave: P1
-    status: pending
-    groot_pack: kafka-stream-clients
+    status: ready
   airflow:
     github: Pocket-Fm/airflow
     wave: P1
-    status: pending
-    groot_pack: airflow
-  fabric:
-    github: Pocket-Fm/fabric
-    wave: P1
-    status: pending
-    groot_pack: fabric
-  content-backend:
-    github: Pocket-Fm/content-backend
-    wave: P1
-    status: pending
-    groot_pack: content-backend
-  go-common:
-    github: Pocket-Fm/go-common
-    wave: P1
-    status: pending
-    groot_pack: null
+    status: ready
   apollo:
     github: Pocket-Fm/apollo
     wave: P1
-    status: pending
-    groot_pack: null
+    status: ready
+  impression:
+    github: Pocket-Fm/fabric
+    wave: P1
+    status: ready
+    notes: code under fabric/impression; no standalone Pocket-Fm/impression
+  go-common:
+    github: Pocket-Fm/go-common
+    wave: P1
+    status: ready
+  python-common:
+    github: Pocket-Fm/python-common
+    wave: P1
+    status: ready
+  experience:
+    github: Pocket-Fm/airflow
+    wave: P1
+    status: ready
+    notes: domain under airflow temporal/experience; no standalone Pocket-Fm/experience
+  content-backend:
+    github: Pocket-Fm/content-backend
+    wave: P1
+    status: ready
+  ads:
+    github: Pocket-Fm/airflow
+    wave: P1
+    status: ready
+    notes: domain under airflow temporal/ads; no standalone Pocket-Fm/ads
   go-radioly:
     github: Pocket-Fm/go-radioly-service
     wave: P2
-    status: pending
-    groot_pack: go-radioly-service
-  pocket_search:
-    github: Pocket-Fm/pocket_search
+    status: ready
+    notes: confirm github name (go-radioly-service)
+  raven:
+    github: Pocket-Fm/raven
     wave: P2
-    status: pending
-    groot_pack: search
-  litefm-backend:
-    github: Pocket-Fm/litefm-backend
+    status: ready
+  fabric:
+    github: Pocket-Fm/fabric
     wave: P2
-    status: pending
-    groot_pack: litefm-backend
+    status: ready
+  media-forge:
+    notes: GitHub Pocket-Fm/media-forge not found / inaccessible
+    github: Pocket-Fm/media-forge
+    wave: P2
+    status: blocked
+  writers-backend:
+    github: Pocket-Fm/writers-backend
+    wave: P2
+    status: ready
+  ugc-backend:
+    notes: GitHub Pocket-Fm/ugc-backend not found; writers-backend may cover UGC APIs
+    github: Pocket-Fm/ugc-backend
+    wave: P2
+    status: blocked
+  ugc-ui:
+    notes: GitHub Pocket-Fm/ugc-ui not found / inaccessible
+    github: Pocket-Fm/ugc-ui
+    wave: P2
+    status: blocked
+  ugc-tts-worker:
+    notes: GitHub Pocket-Fm/ugc-tts-worker not found / inaccessible
+    github: Pocket-Fm/ugc-tts-worker
+    wave: P2
+    status: blocked
   cms-dashboard-backend:
     github: Pocket-Fm/cms-dashboard-backend
     wave: P2
-    status: pending
-    groot_pack: null
-  groot:
-    github: Pocket-Fm/groot
+    status: ready
+  prod_novels_cron_airflow:
+    github: Pocket-Fm/prod_novels_cron_airflow
     wave: P2
-    status: pending
-    groot_pack: null
-    notes: Agent runtime; handbook covers locate/KB contracts only
+    status: ready
+  novels-kafka-stream-client:
+    github: Pocket-Fm/Novels-Kafka-Stream-Clients
+    wave: P2
+    status: ready
+  writers_payout_airflow:
+    github: Pocket-Fm/writers_payout_airflow
+    wave: P2
+    status: ready
+  litefm-backend:
+    github: Pocket-Fm/litefm-backend
+    wave: P2
+    status: ready
+  pocket_search:
+    github: Pocket-Fm/pocket_search
+    wave: P2
+    status: ready
   infra-deployments-k8s:
     github: Pocket-Fm/Infra_deployments_k8s
     wave: P3
-    status: pending
-    groot_pack: null
+    status: ready
     notes: docs-safe paths only; no secrets
   infra-k8s:
     github: Pocket-Fm/Infra_k8s
     wave: P3
-    status: pending
-    groot_pack: null
+    status: ready
     notes: docs-safe paths only
+  infra-docs:
+    github: Pocket-Fm/infra_docs
+    wave: P3
+    status: ready
+  groot:
+    github: Pocket-Fm/groot
+    wave: P2
+    status: ready
+    notes: Agent runtime; handbook covers KB load + locate contracts

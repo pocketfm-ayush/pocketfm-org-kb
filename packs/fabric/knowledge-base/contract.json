@@ -1,0 +1,38 @@
+{
+  "name": "fabric",
+  "language": "go",
+  "framework": "go",
+  "pack_path": "fabric",
+  "graph_path": "fabric/graphify/graphify-out/graph.json",
+  "knowledge_base_path": "fabric/knowledge-base",
+  "default_base": "main",
+  "test_command": "make test",
+  "check_command": "echo lint per-service",
+  "max_repair_iterations": 3,
+  "allowed_edit_paths": [
+    "impression/**",
+    "playtime/**"
+  ],
+  "protected_paths": [
+    "knowledge-base/**",
+    "graphify/**",
+    ".env",
+    "infra/**",
+    "temporal-namespaces/**"
+  ],
+  "source_files_priority": [
+    "impression/server/",
+    "playtime/"
+  ],
+  "test_paths": [
+    "impression/server/**",
+    "impression/clientgo/**",
+    "playtime/**"
+  ],
+  "external_systems": [
+    "scylla",
+    "temporal"
+  ],
+  "mocking_rules": "Service tests must not require live Scylla unless the service README says so. Prefer mocks.",
+  "repo_url": "https://github.com/Pocket-Fm/fabric"
+}

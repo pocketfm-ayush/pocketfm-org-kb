@@ -1,0 +1,41 @@
+{
+  "name": "kafka-stream-clients",
+  "language": "python",
+  "framework": "kafka",
+  "pack_path": "kafka-stream-clients",
+  "graph_path": "kafka-stream-clients/graphify/graphify-out/graph.json",
+  "knowledge_base_path": "kafka-stream-clients/knowledge-base",
+  "default_base": "master",
+  "test_command": "python3 -m unittest discover -s tests",
+  "check_command": "python3 -c 'import yaml,sys; yaml.safe_load(open(\"config.yaml\"))'",
+  "max_repair_iterations": 3,
+  "allowed_edit_paths": [
+    "workers/**",
+    "utils/**",
+    "tests/**"
+  ],
+  "protected_paths": [
+    "knowledge-base/**",
+    "graphify/**",
+    "*.zip",
+    "secure-connect*",
+    "kafka.ini",
+    "novels_kafka.ini"
+  ],
+  "source_files_priority": [
+    "workers/",
+    "workers-kafka-critical.sh",
+    "workers-kafka-consumer.sh"
+  ],
+  "test_paths": [
+    "tests/**"
+  ],
+  "external_systems": [
+    "kafka",
+    "mysql",
+    "redis",
+    "s3"
+  ],
+  "mocking_rules": "Workers must not open live Kafka/MySQL/Redis in unit tests.",
+  "repo_url": "https://github.com/Pocket-Fm/kafka-stream-clients"
+}

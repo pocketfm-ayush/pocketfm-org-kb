@@ -1,0 +1,128 @@
+version: 1
+id: identity
+kind: domain
+ontology_id: domain.identity
+aliases:
+  - user-identity
+  - iam
+description: User, device, authentication, authorization, profile, consent, and account lifecycle.
+repositories:
+  - repository: iam
+  - repository: radioly_client_api
+    modules:
+      - path: v3/experience/onboarding
+        apis:
+          - method: GET
+            path: /v3/onboarding/login_config
+  - repository: android_client
+    branch: master
+    modules:
+      - path: aural/onboarding
+        apis:
+          - method: POST
+            path: /v1/auth/email/resetpassword
+          - method: POST
+            path: /v1/signup/email
+          - method: POST
+            path: /v1/auth/users/login/email
+          - method: POST
+            path: /v2/auth/users/login/truecaller
+          - method: POST
+            path: /v1/auth/auto-login
+          - method: POST
+            path: /v1/auth/users/login/google
+          - method: POST
+            path: /v1/auth/users/login/phone
+          - method: POST
+            path: /v1/auth/users/login/email/otp
+          - method: POST
+            path: /v1/auth/users/email/verify
+          - method: GET
+            path: /v1/users
+          - method: POST
+            path: /v1/auth/webview-token
+          - method: POST
+            path: /v1/auth/web-session-handoff/code
+          - method: POST
+            path: /v1/auth/o2/authorize
+          - method: GET
+            path: /v1/device/accounts
+          - method: GET
+            path: /v3/onboarding/login_config
+          - method: POST
+            path: /v2/user_api/user.send_otp
+          - method: POST
+            path: /v2/user_api/user.verify_otp
+          - method: POST
+            path: /v2/user_api/user.change_password
+      - path: aural/user
+        apis:
+          - method: GET
+            path: /v2/user_api/user.get_profile_details
+          - method: POST
+            path: /v2/user_api/user.update
+          - method: PATCH
+            path: /v2/profiles/profile/{profile_id}/
+  - repository: ios_client
+    branch: master
+    modules:
+      - path: Pocket FM/Presentation/Features/PFMOnboardingView
+      - path: Pocket FM/Domain/Networking/AuthV2
+      - path: Pocket FM/Data/Service/Auth
+        apis:
+          - method: GET
+            path: /v1/auth/config
+          - method: POST
+            path: /v2/auth/upgrade
+          - method: POST
+            path: /v1/auth/refresh
+          - method: POST
+            path: /v1/auth/devices
+          - method: POST
+            path: /v1/auth/webview-token
+          - method: POST
+            path: /v1/auth/web-session-handoff/code
+          - method: POST
+            path: /v1/auth/o2/authorize
+          - method: POST
+            path: /v1/signup/email
+          - method: POST
+            path: /v1/auth/users/login/email
+          - method: POST
+            path: /v1/auth/users/logout
+          - method: POST
+            path: /v1/auth/users/login/phone
+          - method: POST
+            path: /v1/auth/users/login/email/otp
+          - method: POST
+            path: /v1/auth/users/login/google
+          - method: POST
+            path: /v1/auth/users/login/apple
+          - method: POST
+            path: /v1/auth/email/resetpassword
+          - method: POST
+            path: /v1/auth/auto-login
+      - path: Pocket FM/Data/Service/DefaultProfileService.swift
+        apis:
+          - method: GET
+            path: /v2/user_api/user.get_profile_details
+          - method: POST
+            path: /v2/user_api/user.update
+      - path: Pocket FM/Data/Service/DefaultSplashService.swift
+        apis:
+          - method: GET
+            path: /v2/user_api/user.get_authentication_token
+          - method: POST
+            path: /v2/user_api/devices.register
+          - method: POST
+            path: /v2/user_api/device.track_install
+          - method: POST
+            path: /v2/user_api/device.install/
+          - method: PUT
+            path: /v2/user_api/device.install/{device-id}
+          - method: GET
+            path: /v3/onboarding/login_config
+          - method: POST
+            path: /v1/devices/{device-id}/gdpr
+      - path: Pocket FMTests/AuthV2
+      - path: Pocket FMTests/PFMOnboarding

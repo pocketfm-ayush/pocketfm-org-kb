@@ -11,21 +11,20 @@ connectors:
   - connector_id: otel.http
     enabled: false
     profile: operational_read
-    notes: Enable when Sherlock/OTel bridge is approved
+    notes: Phase 7 — enable with Sherlock/OTel bridge
   - connector_id: mcp.generic
     enabled: false
     profile: metadata_only
     allowlist_tools: []
-  # Pocket FM planned adapters (engine support TBD)
   - connector_id: pfm.content_knowledge_base
-    enabled: false
+    enabled: true
     profile: repository_read
-    notes: Sync Groot packs from content-knowledge-base
+    notes: Mirrored under packs/ (CONTRACT, features, pfm-kb, skills)
   - connector_id: pfm.cerebro
-    enabled: false
+    enabled: true
     profile: repository_read
-    notes: Import cross-repo relationships from cerebro-knowledge
+    notes: Domain resource YAMLs under peers/cerebro/resources/
   - connector_id: pfm.sherlock
     enabled: false
     profile: operational_read
-    notes: Live RCA metrics — never treat as durable handbook fact
+    notes: Live RCA metrics — TTL cache only; never durable handbook fact

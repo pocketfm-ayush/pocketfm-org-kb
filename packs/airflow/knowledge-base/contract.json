@@ -1,0 +1,46 @@
+{
+  "name": "airflow",
+  "language": "python",
+  "framework": "airflow",
+  "pack_path": "airflow",
+  "graph_path": "airflow/graphify/graphify-out/graph.json",
+  "knowledge_base_path": "airflow/knowledge-base",
+  "default_base": "main",
+  "test_command": "python3 -m compileall -q dags ads experience payments feed marketing_campaign experiment",
+  "check_command": "black --check dags ads experience payments feed || true",
+  "max_repair_iterations": 3,
+  "allowed_edit_paths": [
+    "dags/**",
+    "ads/**",
+    "experience/**",
+    "payments/**",
+    "feed/**",
+    "marketing_campaign/**",
+    "experiment/**",
+    "common/**",
+    "account_deactivation/**",
+    "loyalty_tier_program/**"
+  ],
+  "protected_paths": [
+    "knowledge-base/**",
+    "graphify/**",
+    "config.ini",
+    "**/*secret*",
+    "db_dumps/**"
+  ],
+  "source_files_priority": [
+    "dags/",
+    "common/"
+  ],
+  "test_paths": [
+    "test_data/**"
+  ],
+  "external_systems": [
+    "airflow",
+    "mysql",
+    "redis",
+    "s3"
+  ],
+  "mocking_rules": "DAGs must fetch secrets via secret manager helpers, not hard-coded credentials.",
+  "repo_url": "https://github.com/Pocket-Fm/airflow"
+}

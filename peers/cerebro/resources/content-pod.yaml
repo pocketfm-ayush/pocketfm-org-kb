@@ -1,0 +1,177 @@
+version: 1
+id: content-pod
+kind: domain
+ontology_id: domain.content-pod
+aliases:
+  - content
+description: Content feeds, discovery, key tropes, presentation, event processing, and scheduled content operations.
+repositories:
+  - repository: radioly_client_api
+    ownership:
+      type: owned_by
+      target: team.content-backend-leads
+      source_owner: Pocket-Fm/content-backend-leads
+      confidence: 1.0
+      evidence:
+        - repository: radioly_client_api
+          path: CODEOWNERS
+          method: static_analysis
+          confidence: 1.0
+    modules:
+      # Direct Content, Feed, Discovery, and creator-content modules.
+      - path: v2/content
+      - path: v2/experiments/content
+      - path: v2/experiments/feed
+      - path: v2/feed_api
+      - path: v2/social
+      - path: v2/trending
+      - path: v2/ugc_originals
+      - path: v2/ugc_originals_feed
+      - path: v2/upload
+      - path: v3/content
+      - path: v3/content_api
+      - path: v3/crosswalk_ds
+      - path: v3/experience/bigger_thumbnails
+      - path: v3/experience/discover_tab
+      - path: v3/experience/key_tropes
+      - path: v3/experience/player_page_sampling
+      - path: v3/experience/plug_and_play
+      - path: v3/feed
+      - path: v3/feed_api
+      - path: v3/liveops
+      - path: v3/playtime
+      - path: v3/ppv
+      - path: v3/ugc
+      - path: v3/ugc_row_homefeed
+      # v2/content_api is shared with Ads and Payments; keep Content APIs only.
+      - path: v2/content_api
+        apis:
+          - method: GET
+            path: /v2/content_api/story.get_details
+          - method: GET
+            path: /v2/content_api/asset.detail
+          - method: GET
+            path: /v2/content_api/show.get_details
+          - method: GET
+            path: /v2/content_api/show.get_episodes
+          - method: GET
+            path: /v2/content_api/show.get_license_details
+          - method: GET
+            path: /v2/content_api/show.get_fairplay_license_details
+          - method: GET
+            path: /v2/content_api/module.get_details
+          - method: GET
+            path: /v2/content_api/topic.get_details
+          - method: GET
+            path: /v2/content_api/topic.get_entities
+          - method: GET
+            path: /v2/content_api/contest.get_details
+          - method: GET
+            path: /v2/content_api/explore.get_topics
+          - method: GET
+            path: /v2/content_api/script.get_details
+          - method: GET
+            path: /v2/content_api/tag.get_entities
+          - method: GET
+            path: /v2/content_api/show-character-info/
+          - method: POST
+            path: /v2/content_api/internal/entity_cache_invalidate
+          - method: POST
+            path: /v2/content_api/deep_link_entity
+          - method: GET
+            path: /v2/content_api/ugc_author/my_creations
+          - method: GET
+            path: /v2/content_api/ugc_author/reviews
+          - method: POST
+            path: /v2/content_api/ugc_author/community_links
+          - method: GET
+            path: /v2/content_api/ugc_author/profile_revamp_info
+          - method: POST
+            path: /v2/content_api/internal/ugc/notes/publish
+          - method: POST
+            path: /v2/content_api/internal/ugc/notes/disable
+          - method: GET
+            path: /v2/content_api/internal/ugc/notes/info
+          - method: POST
+            path: /v2/content_api/internal/ugc/notes/reactions/bulk
+          - method: POST
+            path: /v2/content_api/ugc_author/notes/reaction
+          - method: GET
+            path: /v2/content_api/ugc_author/notes/info
+      # v2/user_api is cross-domain; these are Content-owned library/actions APIs.
+      - path: v2/user_api
+        apis:
+          - method: GET
+            path: /v2/user_api/user.show.history/{show_id}
+          - method: GET
+            path: /v2/user_api/user_library/
+          - method: POST
+            path: /v2/user_api/user_action.update
+          - method: POST
+            path: /v2/user_api/entity.mark_not_interested
+      # v3/user is shared routing; playtime implementation lives in v3/playtime.
+      - path: v3/user
+        apis:
+          - method: GET
+            path: /v3/user/playtime
+          - method: GET
+            path: /v3/user/playtime/last-story
+  - repository: content-backend
+    branch: main
+    modules:
+      - path: internal
+  - repository: android_client
+    branch: master
+    modules:
+      - path: aural/feed
+      - path: aural/discover
+      - path: aural/keytrope
+      - path: aural/player/feed
+  - repository: ios_client
+    branch: master
+    modules:
+      - path: Pocket FM/Presentation/Features/PFMHomeView
+      - path: Pocket FM/Presentation/Features/PFMDiscoverShortsTab
+      - path: Pocket FM/Presentation/Features/PFMKeyTropes
+      - path: Pocket FM/Presentation/Features/PFMPlayerView/Components/Story
+      - path: Pocket FM/Data/Service/DefaultHomeService.swift
+      - path: Pocket FM/Data/Service/DefaultDiscoverService.swift
+      - path: Pocket FM/Data/Service/DefaultPlayerPlaylistService.swift
+      - path: Pocket FM/Data/Service/KeyTropes
+      - path: Pocket FM/Data/Repository/DefaultPFMHomeRepository.swift
+      - path: Pocket FM/Data/Repository/DefaultPFMDiscoverRepository.swift
+      - path: Pocket FM/Data/Repository/DefaultPFMPlayerRepository.swift
+      - path: Pocket FM/Data/Repository/KeyTropes
+      - path: Pocket FM/Data/UseCase/DefaultPFMHomeUseCase.swift
+      - path: Pocket FM/Data/UseCase/DefaultPFMPlayerUseCase.swift
+      - path: Pocket FM/Data/UseCase/KeyTropes
+      - path: Pocket FM/Domain/RepositoryProtocol/PFMHomeRepository.swift
+      - path: Pocket FM/Domain/RepositoryProtocol/PFMDiscoverRepository.swift
+      - path: Pocket FM/Domain/RepositoryProtocol/PFMPlayerRepository.swift
+      - path: Pocket FM/Domain/RepositoryProtocol/KeyTropes
+      - path: Pocket FM/Domain/ServiceProtocol/PFMHomeService.swift
+      - path: Pocket FM/Domain/ServiceProtocol/PFMDiscoverService.swift
+      - path: Pocket FM/Domain/ServiceProtocol/PFMPlayerPlaylistService.swift
+      - path: Pocket FM/Domain/ServiceProtocol/KeyTropes
+      - path: Pocket FM/Domain/UseCaseProtocol/PFMHomeUseCase.swift
+      - path: Pocket FM/Domain/UseCaseProtocol/PFMPlayerUseCase.swift
+      - path: Pocket FM/Domain/UseCaseProtocol/KeyTropes
+  - repository: kafka-stream-clients
+    branch: master
+    modules:
+      - path: workers/content
+      - path: workers/ds_show_thumbnail
+      - path: workers/entity_reaction_event
+      - path: workers/device_first_dau
+      - path: workers/experience/discover_tab
+      - path: workers/experience/key_tropes
+      - path: workers/update_entity_stats_v2.py
+      - path: workers/entity_counter_consumer.py
+      - path: workers/content_shared_events_worker.py
+      - path: workers-kafka.json
+  - repository: airflow
+    branch: main
+    modules:
+      - path: temporal/content
+      - path: temporal/scripts/sync_schedules.py
+      - path: .github/workflows/temporal-sync-schedules.yml

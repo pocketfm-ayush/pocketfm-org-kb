@@ -1,0 +1,47 @@
+feature_to_product:
+  event-relay: event-relay
+  event-ingest: event-ingest
+  tenant-routing: tenant-routing
+  platform-export: platform-export
+  delivery-resilience: delivery-resilience
+  allowlist-event-config: allowlist-event-config
+  export-tiktok: export-tiktok
+  export-firebase: export-firebase
+  export-appsflyer: export-appsflyer
+  export-meta: export-meta
+  export-moengage: export-moengage
+  user-attribution: user-attribution
+  gtm-impression-routing: gtm-impression-routing
+  listening-level-s2s: listening-level-s2s
+  limited-experience-signals: limited-experience-signals
+  event-enrichment: event-enrichment
+  backend-direct-path: backend-direct-path
+  stream-analytics: stream-analytics
+  alexa-event-ingest: alexa-event-ingest
+  event-config-admin: event-config-admin
+  multi-tenant-apps: multi-tenant-apps
+product_to_feature:
+  event-relay: event-relay
+  event-ingest: event-ingest
+  tenant-routing: tenant-routing
+  platform-export: platform-export
+  delivery-resilience: delivery-resilience
+  allowlist-event-config: allowlist-event-config
+  export-tiktok: export-tiktok
+  export-firebase: export-firebase
+  export-appsflyer: export-appsflyer
+  export-meta: export-meta
+  export-moengage: export-moengage
+  user-attribution: user-attribution
+  gtm-impression-routing: gtm-impression-routing
+  listening-level-s2s: listening-level-s2s
+  limited-experience-signals: limited-experience-signals
+  event-enrichment: event-enrichment
+  backend-direct-path: backend-direct-path
+  stream-analytics: stream-analytics
+  alexa-event-ingest: alexa-event-ingest
+  event-config-admin: event-config-admin
+  multi-tenant-apps: multi-tenant-apps
+notes: >
+  Catalog umbrella remains event-relay. Modes gateway/router/exporter-*/fallback
+  and per-provider twins are product slices. Not every Go file has a twin.

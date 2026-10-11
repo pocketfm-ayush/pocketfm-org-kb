@@ -1,0 +1,40 @@
+{
+  "name": "android_client",
+  "language": "kotlin",
+  "framework": "android",
+  "pack_path": "android-client",
+  "graph_path": "android-client/graphify/graphify-out/graph.json",
+  "knowledge_base_path": "android-client/knowledge-base",
+  "default_base": "master",
+  "test_command": "./gradlew test",
+  "check_command": "./gradlew lint",
+  "max_repair_iterations": 3,
+  "allowed_edit_paths": [
+    "aural/**",
+    "app/**",
+    "common/**"
+  ],
+  "protected_paths": [
+    "knowledge-base/**",
+    "graphify/**",
+    ".secrets*",
+    "**/*.keystore",
+    "android_generated/**"
+  ],
+  "source_files_priority": [
+    "aural/",
+    "app/",
+    "common/"
+  ],
+  "test_paths": [
+    "aural/**/src/test/**",
+    "app/**/src/test/**"
+  ],
+  "external_systems": [
+    "radioly",
+    "content-backend",
+    "firebase"
+  ],
+  "mocking_rules": "Reuse TextHelperResponseModel / CtaModelResponseModel \u2014 do not duplicate JSON models. Confirm app vs aural vs both before editing.",
+  "repo_url": "https://github.com/Pocket-Fm/android_client"
+}
